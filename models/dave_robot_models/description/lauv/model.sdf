@@ -413,11 +413,11 @@
     <!-- Fin plugin -->
     <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
       <air_density>1000</air_density>
-      <cla>4.13</cla>
+      <cla>3.0</cla>
       <cla_stall>-1.1</cla_stall>
-      <cda>0.2</cda>
+      <cda>1.98</cda>
       <cda_stall>0.03</cda_stall>
-      <alpha_stall>0.17</alpha_stall>
+      <alpha_stall>0.87</alpha_stall>
       <a0>0</a0>
       <area>0.0244</area>
       <upward>0 1 0</upward>
@@ -428,11 +428,11 @@
 
     <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
       <air_density>1000</air_density>
-      <cla>4.13</cla>
+      <cla>3.0</cla>
       <cla_stall>-1.1</cla_stall>
-      <cda>0.2</cda>
+      <cda>1.98</cda>
       <cda_stall>0.03</cda_stall>
-      <alpha_stall>0.17</alpha_stall>
+      <alpha_stall>0.87</alpha_stall>
       <a0>0</a0>
       <area>0.0244</area>
       <upward>0 1 0</upward>
@@ -443,11 +443,11 @@
 
     <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
       <air_density>1000</air_density>
-      <cla>4.13</cla>
+      <cla>3.0</cla>
       <cla_stall>-1.1</cla_stall>
-      <cda>0.2</cda>
+      <cda>1.98</cda>
       <cda_stall>0.03</cda_stall>
-      <alpha_stall>0.17</alpha_stall>
+      <alpha_stall>0.87</alpha_stall>
       <a0>0</a0>
       <area>0.0244</area>
       <upward>0 1 0</upward>
@@ -458,11 +458,11 @@
 
     <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
       <air_density>1000</air_density>
-      <cla>4.13</cla>
+      <cla>3.0</cla>
       <cla_stall>-1.1</cla_stall>
-      <cda>0.2</cda>
+      <cda>1.98</cda>
       <cda_stall>0.03</cda_stall>
-      <alpha_stall>0.17</alpha_stall>
+      <alpha_stall>0.87</alpha_stall>
       <a0>0</a0>
       <area>0.0244</area>
       <upward>0 1 0</upward>
