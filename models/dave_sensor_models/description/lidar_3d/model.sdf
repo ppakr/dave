@@ -58,25 +58,25 @@
       <!-- Replace Multibeam sonar with 3D lidar instead -->
       <sensor name="gpu_lidar" type="gpu_lidar">
         <pose>0 0 0 0 0 0</pose>
-        <update_rate>10</update_rate>
+        <update_rate>5</update_rate>
         <lidar>
           <scan>
             <horizontal>
               <samples>640</samples>
-              <resolution>1</resolution>
-              <min_angle>-3.14159</min_angle>
-              <max_angle>3.14159</max_angle>
+              <resolution>1.0</resolution>
+              <min_angle>-0.785398</min_angle>
+              <max_angle>0.785398</max_angle>
             </horizontal>
             <vertical>
               <samples>16</samples>
-              <resolution>1</resolution>
-              <min_angle>-0.261799</min_angle>
-              <max_angle>0.261799</max_angle>
+              <resolution>1.0</resolution>
+              <min_angle>-0.349066</min_angle>
+              <max_angle>0.349066</max_angle>
             </vertical>
           </scan>
           <range>
             <min>0.1</min>
-            <max>30.0</max>
+            <max>15.0</max>
             <resolution>0.01</resolution>
           </range>
         </lidar>
