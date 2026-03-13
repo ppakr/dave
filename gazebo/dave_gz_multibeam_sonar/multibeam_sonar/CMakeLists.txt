@@ -11,7 +11,7 @@ cmake_policy(SET CMP0144 NEW)
 
 project(multibeam_sonar)
 
-set(CUDA_ARCHITECTURE "60" CACHE STRING "Target CUDA SM version")
+set(CUDA_ARCHITECTURE "89" CACHE STRING "Target CUDA SM version")
 
 find_package(ament_cmake REQUIRED)
 find_package(CUDAToolkit QUIET)
