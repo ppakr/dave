@@ -31,10 +31,6 @@ config_content = f"""<?xml version="1.0"?>
   <name>3D Sonar</name>
   <version>1.0</version>
   <sdf version="1.9">model.sdf</sdf>
-  <author>
-    <name>Generated</name>
-    <email>generated@example.com</email>
-  </author>
   <description>
     {num_sensors} multibeam sonars stacked with {elevation_step_deg} degree elevation difference.
     Horizontal FOV: 90 deg, Vertical FOV: 40 deg.
@@ -50,31 +46,34 @@ sdf_content = """<?xml version="1.0" ?>
   <model name="3d_sonar">
     <link name="base_link">
       <inertial>
-        <mass>1.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>3.5</mass>
         <inertia>
-          <ixx>0.01</ixx>
-          <iyy>0.01</iyy>
-          <izz>0.01</izz>
+          <ixx>0.0195872</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0195872</iyy>
+          <iyz>0</iyz>
+          <izz>0.0151357</izz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="blueview_p900_base_link_visual">
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <cylinder>
-            <radius>0.1</radius>
-            <length>0.5</length>
-          </cylinder>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/blueview_p900/p900.dae</uri>
+          </mesh>
         </geometry>
-        <material>
-          <ambient>0.2 0.2 0.2 1</ambient>
-          <diffuse>0.2 0.2 0.2 1</diffuse>
-        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
       </visual>
-      <collision name="collision">
+      <collision name="blueview_p900_base_link_collision">
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <cylinder>
-            <radius>0.1</radius>
-            <length>0.5</length>
-          </cylinder>
+          <mesh>
+            <uri>model://meshes/blueview_p900/COLLISION-p900.dae</uri>
+          </mesh>
         </geometry>
       </collision>
 """
@@ -86,13 +85,13 @@ for i in range(num_sensors):
     pitch_rad = math.radians(pitch_deg)
     
     sensor_xml = f"""
-      <sensor name="sonar_3d_{i}" type="custom" gz:type="sonar_3d">
+      <sensor name="sonar_3d_{i}" type="custom" gz:type="multibeam_sonar">
         <pose>0 0 0 0 {pitch_rad:.6f} 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
-        <topic>/sensor/sonar_3d/{i}</topic>
+        <topic>/sensor/sonar_3d/beam_{i}</topic>
         <visualize>true</visualize>
-        <gz:sonar_3d>
+        <gz:multibeam_sonar>
         <ray degrees="false">
           <scan>
             <horizontal>
@@ -129,12 +128,13 @@ for i in range(num_sensors):
             <sonarImageTopicName>sonar_image_{i}</sonarImageTopicName>
             <frameName>sonar_3d_link_{i}</frameName>
           </spec>
-        </gz:sonar_3d>
+        </gz:multibeam_sonar>
       </sensor>"""
     sdf_content += sensor_xml
 
 sdf_content += """
     </link>
+    <static>1</static>
   </model>
 </sdf>
 """
