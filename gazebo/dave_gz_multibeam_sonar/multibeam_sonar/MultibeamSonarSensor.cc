@@ -501,8 +501,10 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
     for (int h = 0; h < beamCount; ++h)
     {
       // Calculate beam angles
-      gz::math::Angle beamApertureAngle =
-        gz::math::Angle(verticalAngleMax - verticalAngleMin) * angleUnit;
+      gz::math::Angle beamApertureAngle = gz::math::Angle(verticalAngleMax - verticalAngleMin) *
+                                          angleUnit;  // not squre like in the paper
+      // psi_max -> vertical angle max, psi_min -> vertical angle min
+      // beamApartureangle -> psi_bw in figure 1
       gz::math::Angle beamRotationAngle =
         gz::math::Angle(horizAngleMin + (h * (horizAngleMax - horizAngleMin) / beamCount)) *
         angleUnit;
@@ -533,13 +535,23 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   {
     beamsSphericalFootprint.Merge(beam.SphericalFootprint());
   }
+  gzmsg << "beamsSphericalFootprint: " << beamsSphericalFootprint.XMin() << " "
+        << beamsSphericalFootprint.XMax() << " " << beamsSphericalFootprint.YMin() << " "
+        << beamsSphericalFootprint.YMax() << std::endl;
   // Rendering sensors' FOV must be symmetric about its main axis
   beamsSphericalFootprint.Merge(beamsSphericalFootprint.Flip());
+  gzmsg << "beamsSphericalFootprint Fliped: " << beamsSphericalFootprint.XMin() << " "
+        << beamsSphericalFootprint.XMax() << " " << beamsSphericalFootprint.YMin() << " "
+        << beamsSphericalFootprint.YMax() << std::endl;
 
-  this->raySensor->SetAngleMin(horizAngleMin);
+  this->raySensor->SetAngleMin(horizAngleMin);  // horizontal angle
   this->raySensor->SetAngleMax(horizAngleMax);
+  gzmsg << "Horizontal Angle Min" << horizAngleMin << std::endl;
+  gzmsg << "Horizontal Angle Max" << horizAngleMax << std::endl;
   gzmsg << "Beams Angle Min: " << beamsSphericalFootprint.XMin() << std::endl;
   gzmsg << "Beams Angle Max: " << beamsSphericalFootprint.XMax() << std::endl;
+  gzmsg << "Vertical Angle Min" << verticalAngleMin << std::endl;
+  gzmsg << "Vertical Angle Max" << verticalAngleMax << std::endl;
   gzmsg << "V Angle Max: " << beamsSphericalFootprint.YMax() << std::endl;
   gzmsg << "V Angle Min: " << beamsSphericalFootprint.YMin() << std::endl;
 
@@ -604,9 +616,10 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   this->pointMsg.set_height(this->raySensor->VerticalRangeCount());
   this->pointMsg.set_row_step(this->pointMsg.point_step() * this->pointMsg.width());
 
-  this->rayConnection = this->raySensor->ConnectNewGpuRaysFrame(std::bind(
-    &MultibeamSonarSensor::Implementation::OnNewFrame, this, std::placeholders::_1,
-    std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
+  this->rayConnection = this->raySensor->ConnectNewGpuRaysFrame(
+    std::bind(
+      &MultibeamSonarSensor::Implementation::OnNewFrame, this, std::placeholders::_1,
+      std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 
   // Transmission path properties (typical model used here)
   // More sophisticated model by Francois-Garrison model is available

@@ -26,7 +26,7 @@ public:
     using Quaterniond = gz::math::Quaterniond;
 
     // Rotação extrínseca XY (rot_x * rot_y)
-    this->transform.Rot() = Quaterniond::EulerToQuaternion(_rotationAngle.Radian(), 0., 0.) *
+    this->transform.Rot() = Quaterniond::EulerToQuaternion(0.0, 0., _rotationAngle.Radian()) *
                             Quaterniond::EulerToQuaternion(0., _tiltAngle.Radian(), 0.);
 
     this->axis = this->transform.Rot() * gz::math::Vector3d::UnitX;
