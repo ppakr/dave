@@ -563,8 +563,8 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   this->raySensor->SetRayCount(horizontalRayCount);
   this->nBeams = horizontalRayCount;
 
-  this->raySensor->SetVerticalAngleMin(beamsSphericalFootprint.YMin());
-  this->raySensor->SetVerticalAngleMax(beamsSphericalFootprint.YMax());
+  this->raySensor->SetVerticalAngleMin(verticalAngleMin);
+  this->raySensor->SetVerticalAngleMax(verticalAngleMax);
   auto verticalRayCount = rayCount;
   if (verticalRayCount % 2 == 0)
   {
