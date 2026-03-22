@@ -100,7 +100,7 @@ for i in range(multibeam_vertical_num_sensors):
     print(f"Generating sensor {i} with pitch {math.degrees(pitch_rad):.6f}")
     sensor_xml = f"""
       <sensor name="sonar_3d_{i}" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 {pitch_rad:.6f} 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_{i}</topic>
@@ -115,8 +115,8 @@ for i in range(multibeam_vertical_num_sensors):
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>{multibeam_vertical_min_angle_rad:.6f}</min_angle>
-              <max_angle>{multibeam_vertical_max_angle_rad:.6f}</max_angle>
+              <min_angle>{pitch_rad + multibeam_vertical_min_angle_rad:.6f}</min_angle>
+              <max_angle>{pitch_rad + multibeam_vertical_max_angle_rad:.6f}</max_angle>
             </vertical>
           </scan>
           <range>

@@ -35,7 +35,7 @@
       </collision>
 
       <sensor name="sonar_3d_0" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.345575 0</pose>
+        <pose>0 0 0 0 -0.329867 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_0</topic>
@@ -44,14 +44,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.343830</min_angle>
+              <max_angle>-0.315905</max_angle>
             </vertical>
           </scan>
           <range>
@@ -80,7 +80,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_1" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.335103 0</pose>
+        <pose>0 0 0 0 -0.319395 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_1</topic>
@@ -89,14 +89,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.333358</min_angle>
+              <max_angle>-0.305433</max_angle>
             </vertical>
           </scan>
           <range>
@@ -125,7 +125,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_2" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.324631 0</pose>
+        <pose>0 0 0 0 -0.308923 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_2</topic>
@@ -134,14 +134,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.322886</min_angle>
+              <max_angle>-0.294961</max_angle>
             </vertical>
           </scan>
           <range>
@@ -170,7 +170,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_3" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.314159 0</pose>
+        <pose>0 0 0 0 -0.298451 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_3</topic>
@@ -179,14 +179,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.312414</min_angle>
+              <max_angle>-0.284489</max_angle>
             </vertical>
           </scan>
           <range>
@@ -215,7 +215,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_4" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.303687 0</pose>
+        <pose>0 0 0 0 -0.287979 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_4</topic>
@@ -224,14 +224,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.301942</min_angle>
+              <max_angle>-0.274017</max_angle>
             </vertical>
           </scan>
           <range>
@@ -260,7 +260,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_5" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.293215 0</pose>
+        <pose>0 0 0 0 -0.277507 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_5</topic>
@@ -269,14 +269,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.291470</min_angle>
+              <max_angle>-0.263545</max_angle>
             </vertical>
           </scan>
           <range>
@@ -305,7 +305,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_6" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.282743 0</pose>
+        <pose>0 0 0 0 -0.267035 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_6</topic>
@@ -314,14 +314,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.280998</min_angle>
+              <max_angle>-0.253073</max_angle>
             </vertical>
           </scan>
           <range>
@@ -350,7 +350,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_7" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.272271 0</pose>
+        <pose>0 0 0 0 -0.256563 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_7</topic>
@@ -359,14 +359,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.270526</min_angle>
+              <max_angle>-0.242601</max_angle>
             </vertical>
           </scan>
           <range>
@@ -395,7 +395,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_8" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.261799 0</pose>
+        <pose>0 0 0 0 -0.246091 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_8</topic>
@@ -404,14 +404,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.260054</min_angle>
+              <max_angle>-0.232129</max_angle>
             </vertical>
           </scan>
           <range>
@@ -440,7 +440,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_9" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.251327 0</pose>
+        <pose>0 0 0 0 -0.235619 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_9</topic>
@@ -449,14 +449,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.249582</min_angle>
+              <max_angle>-0.221657</max_angle>
             </vertical>
           </scan>
           <range>
@@ -485,7 +485,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_10" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.240855 0</pose>
+        <pose>0 0 0 0 -0.225147 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_10</topic>
@@ -494,14 +494,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.239110</min_angle>
+              <max_angle>-0.211185</max_angle>
             </vertical>
           </scan>
           <range>
@@ -530,7 +530,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_11" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.230383 0</pose>
+        <pose>0 0 0 0 -0.214675 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_11</topic>
@@ -539,14 +539,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.228638</min_angle>
+              <max_angle>-0.200713</max_angle>
             </vertical>
           </scan>
           <range>
@@ -575,7 +575,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_12" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.219911 0</pose>
+        <pose>0 0 0 0 -0.204204 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_12</topic>
@@ -584,14 +584,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.218166</min_angle>
+              <max_angle>-0.190241</max_angle>
             </vertical>
           </scan>
           <range>
@@ -620,7 +620,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_13" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.209440 0</pose>
+        <pose>0 0 0 0 -0.193732 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_13</topic>
@@ -629,14 +629,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.207694</min_angle>
+              <max_angle>-0.179769</max_angle>
             </vertical>
           </scan>
           <range>
@@ -665,7 +665,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_14" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.198968 0</pose>
+        <pose>0 0 0 0 -0.183260 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_14</topic>
@@ -674,14 +674,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.197222</min_angle>
+              <max_angle>-0.169297</max_angle>
             </vertical>
           </scan>
           <range>
@@ -710,7 +710,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_15" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.188496 0</pose>
+        <pose>0 0 0 0 -0.172788 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_15</topic>
@@ -719,14 +719,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.186750</min_angle>
+              <max_angle>-0.158825</max_angle>
             </vertical>
           </scan>
           <range>
@@ -755,7 +755,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_16" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.178024 0</pose>
+        <pose>0 0 0 0 -0.162316 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_16</topic>
@@ -764,14 +764,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.176278</min_angle>
+              <max_angle>-0.148353</max_angle>
             </vertical>
           </scan>
           <range>
@@ -800,7 +800,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_17" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.167552 0</pose>
+        <pose>0 0 0 0 -0.151844 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_17</topic>
@@ -809,14 +809,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.165806</min_angle>
+              <max_angle>-0.137881</max_angle>
             </vertical>
           </scan>
           <range>
@@ -845,7 +845,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_18" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.157080 0</pose>
+        <pose>0 0 0 0 -0.141372 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_18</topic>
@@ -854,14 +854,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.155334</min_angle>
+              <max_angle>-0.127409</max_angle>
             </vertical>
           </scan>
           <range>
@@ -890,7 +890,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_19" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.146608 0</pose>
+        <pose>0 0 0 0 -0.130900 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_19</topic>
@@ -899,14 +899,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.144862</min_angle>
+              <max_angle>-0.116937</max_angle>
             </vertical>
           </scan>
           <range>
@@ -935,7 +935,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_20" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.136136 0</pose>
+        <pose>0 0 0 0 -0.120428 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_20</topic>
@@ -944,14 +944,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.134390</min_angle>
+              <max_angle>-0.106465</max_angle>
             </vertical>
           </scan>
           <range>
@@ -980,7 +980,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_21" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.125664 0</pose>
+        <pose>0 0 0 0 -0.109956 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_21</topic>
@@ -989,14 +989,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.123918</min_angle>
+              <max_angle>-0.095993</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1025,7 +1025,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_22" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.115192 0</pose>
+        <pose>0 0 0 0 -0.099484 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_22</topic>
@@ -1034,14 +1034,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.113446</min_angle>
+              <max_angle>-0.085521</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1070,7 +1070,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_23" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.104720 0</pose>
+        <pose>0 0 0 0 -0.089012 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_23</topic>
@@ -1079,14 +1079,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.102974</min_angle>
+              <max_angle>-0.075049</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1115,7 +1115,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_24" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.094248 0</pose>
+        <pose>0 0 0 0 -0.078540 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_24</topic>
@@ -1124,14 +1124,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.092502</min_angle>
+              <max_angle>-0.064577</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1160,7 +1160,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_25" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.083776 0</pose>
+        <pose>0 0 0 0 -0.068068 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_25</topic>
@@ -1169,14 +1169,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.082030</min_angle>
+              <max_angle>-0.054105</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1205,7 +1205,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_26" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.073304 0</pose>
+        <pose>0 0 0 0 -0.057596 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_26</topic>
@@ -1214,14 +1214,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.071558</min_angle>
+              <max_angle>-0.043633</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1250,7 +1250,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_27" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.062832 0</pose>
+        <pose>0 0 0 0 -0.047124 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_27</topic>
@@ -1259,14 +1259,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.061087</min_angle>
+              <max_angle>-0.033161</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1295,7 +1295,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_28" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.052360 0</pose>
+        <pose>0 0 0 0 -0.036652 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_28</topic>
@@ -1304,14 +1304,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.050615</min_angle>
+              <max_angle>-0.022689</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1340,7 +1340,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_29" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.041888 0</pose>
+        <pose>0 0 0 0 -0.026180 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_29</topic>
@@ -1349,14 +1349,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.040143</min_angle>
+              <max_angle>-0.012217</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1385,7 +1385,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_30" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.031416 0</pose>
+        <pose>0 0 0 0 -0.015708 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_30</topic>
@@ -1394,14 +1394,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.029671</min_angle>
+              <max_angle>-0.001745</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1430,7 +1430,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_31" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.020944 0</pose>
+        <pose>0 0 0 0 -0.005236 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_31</topic>
@@ -1439,14 +1439,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.019199</min_angle>
+              <max_angle>0.008727</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1475,7 +1475,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_32" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 -0.010472 0</pose>
+        <pose>0 0 0 0 0.005236 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_32</topic>
@@ -1484,14 +1484,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>-0.008727</min_angle>
+              <max_angle>0.019199</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1520,7 +1520,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_33" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.000000 0</pose>
+        <pose>0 0 0 0 0.015708 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_33</topic>
@@ -1529,14 +1529,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.001745</min_angle>
+              <max_angle>0.029671</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1565,7 +1565,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_34" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.010472 0</pose>
+        <pose>0 0 0 0 0.026180 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_34</topic>
@@ -1574,14 +1574,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.012217</min_angle>
+              <max_angle>0.040143</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1610,7 +1610,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_35" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.020944 0</pose>
+        <pose>0 0 0 0 0.036652 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_35</topic>
@@ -1619,14 +1619,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.022689</min_angle>
+              <max_angle>0.050615</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1655,7 +1655,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_36" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.031416 0</pose>
+        <pose>0 0 0 0 0.047124 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_36</topic>
@@ -1664,14 +1664,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.033161</min_angle>
+              <max_angle>0.061087</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1700,7 +1700,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_37" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.041888 0</pose>
+        <pose>0 0 0 0 0.057596 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_37</topic>
@@ -1709,14 +1709,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.043633</min_angle>
+              <max_angle>0.071558</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1745,7 +1745,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_38" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.052360 0</pose>
+        <pose>0 0 0 0 0.068068 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_38</topic>
@@ -1754,14 +1754,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.054105</min_angle>
+              <max_angle>0.082030</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1790,7 +1790,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_39" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.062832 0</pose>
+        <pose>0 0 0 0 0.078540 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_39</topic>
@@ -1799,14 +1799,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.064577</min_angle>
+              <max_angle>0.092502</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1835,7 +1835,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_40" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.073304 0</pose>
+        <pose>0 0 0 0 0.089012 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_40</topic>
@@ -1844,14 +1844,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.075049</min_angle>
+              <max_angle>0.102974</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1880,7 +1880,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_41" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.083776 0</pose>
+        <pose>0 0 0 0 0.099484 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_41</topic>
@@ -1889,14 +1889,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.085521</min_angle>
+              <max_angle>0.113446</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1925,7 +1925,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_42" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.094248 0</pose>
+        <pose>0 0 0 0 0.109956 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_42</topic>
@@ -1934,14 +1934,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.095993</min_angle>
+              <max_angle>0.123918</max_angle>
             </vertical>
           </scan>
           <range>
@@ -1970,7 +1970,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_43" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.104720 0</pose>
+        <pose>0 0 0 0 0.120428 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_43</topic>
@@ -1979,14 +1979,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.106465</min_angle>
+              <max_angle>0.134390</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2015,7 +2015,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_44" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.115192 0</pose>
+        <pose>0 0 0 0 0.130900 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_44</topic>
@@ -2024,14 +2024,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.116937</min_angle>
+              <max_angle>0.144862</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2060,7 +2060,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_45" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.125664 0</pose>
+        <pose>0 0 0 0 0.141372 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_45</topic>
@@ -2069,14 +2069,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.127409</min_angle>
+              <max_angle>0.155334</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2105,7 +2105,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_46" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.136136 0</pose>
+        <pose>0 0 0 0 0.151844 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_46</topic>
@@ -2114,14 +2114,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.137881</min_angle>
+              <max_angle>0.165806</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2150,7 +2150,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_47" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.146608 0</pose>
+        <pose>0 0 0 0 0.162316 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_47</topic>
@@ -2159,14 +2159,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.148353</min_angle>
+              <max_angle>0.176278</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2195,7 +2195,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_48" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.157080 0</pose>
+        <pose>0 0 0 0 0.172788 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_48</topic>
@@ -2204,14 +2204,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.158825</min_angle>
+              <max_angle>0.186750</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2240,7 +2240,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_49" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.167552 0</pose>
+        <pose>0 0 0 0 0.183260 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_49</topic>
@@ -2249,14 +2249,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.169297</min_angle>
+              <max_angle>0.197222</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2285,7 +2285,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_50" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.178024 0</pose>
+        <pose>0 0 0 0 0.193732 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_50</topic>
@@ -2294,14 +2294,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.179769</min_angle>
+              <max_angle>0.207694</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2330,7 +2330,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_51" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.188496 0</pose>
+        <pose>0 0 0 0 0.204204 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_51</topic>
@@ -2339,14 +2339,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.190241</min_angle>
+              <max_angle>0.218166</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2375,7 +2375,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_52" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.198968 0</pose>
+        <pose>0 0 0 0 0.214675 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_52</topic>
@@ -2384,14 +2384,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.200713</min_angle>
+              <max_angle>0.228638</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2420,7 +2420,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_53" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.209440 0</pose>
+        <pose>0 0 0 0 0.225147 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_53</topic>
@@ -2429,14 +2429,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.211185</min_angle>
+              <max_angle>0.239110</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2465,7 +2465,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_54" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.219911 0</pose>
+        <pose>0 0 0 0 0.235619 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_54</topic>
@@ -2474,14 +2474,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.221657</min_angle>
+              <max_angle>0.249582</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2510,7 +2510,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_55" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.230383 0</pose>
+        <pose>0 0 0 0 0.246091 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_55</topic>
@@ -2519,14 +2519,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.232129</min_angle>
+              <max_angle>0.260054</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2555,7 +2555,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_56" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.240855 0</pose>
+        <pose>0 0 0 0 0.256563 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_56</topic>
@@ -2564,14 +2564,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.242601</min_angle>
+              <max_angle>0.270526</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2600,7 +2600,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_57" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.251327 0</pose>
+        <pose>0 0 0 0 0.267035 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_57</topic>
@@ -2609,14 +2609,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.253073</min_angle>
+              <max_angle>0.280998</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2645,7 +2645,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_58" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.261799 0</pose>
+        <pose>0 0 0 0 0.277507 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_58</topic>
@@ -2654,14 +2654,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.263545</min_angle>
+              <max_angle>0.291470</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2690,7 +2690,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_59" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.272271 0</pose>
+        <pose>0 0 0 0 0.287979 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_59</topic>
@@ -2699,14 +2699,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.274017</min_angle>
+              <max_angle>0.301942</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2735,7 +2735,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_60" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.282743 0</pose>
+        <pose>0 0 0 0 0.298451 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_60</topic>
@@ -2744,14 +2744,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.284489</min_angle>
+              <max_angle>0.312414</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2780,7 +2780,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_61" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.293215 0</pose>
+        <pose>0 0 0 0 0.308923 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_61</topic>
@@ -2789,14 +2789,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.294961</min_angle>
+              <max_angle>0.322886</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2825,7 +2825,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_62" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.303687 0</pose>
+        <pose>0 0 0 0 0.319395 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_62</topic>
@@ -2834,14 +2834,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.305433</min_angle>
+              <max_angle>0.333358</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2870,7 +2870,7 @@
         </gz:multibeam_sonar>
       </sensor>
       <sensor name="sonar_3d_63" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.314159 0</pose>
+        <pose>0 0 0 0 0.329867 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_63</topic>
@@ -2879,14 +2879,14 @@
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
+              <beams>256</beams>
+              <min_angle>-0.784962</min_angle>
+              <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>0.315905</min_angle>
+              <max_angle>0.343830</max_angle>
             </vertical>
           </scan>
           <range>
@@ -2911,141 +2911,6 @@
             <sonarImageRawTopicName>sonar_image_raw_63</sonarImageRawTopicName>
             <sonarImageTopicName>sonar_image_63</sonarImageTopicName>
             <frameName>sonar_3d_link_63</frameName>
-          </spec>
-        </gz:multibeam_sonar>
-      </sensor>
-      <sensor name="sonar_3d_64" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.324631 0</pose>
-        <always_on>true</always_on>
-        <update_rate>30.0</update_rate>
-        <topic>/sensor/sonar_3d/beam_64</topic>
-        <visualize>true</visualize>
-        <gz:multibeam_sonar>
-        <ray degrees="false">
-          <scan>
-            <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
-            </horizontal>
-            <vertical>
-              <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
-            </vertical>
-          </scan>
-          <range>
-            <min>0.1</min>
-            <max>10.0</max>
-          </range>
-        </ray>
-          <spec>
-            <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
-            <bandwidth>29.9e3</bandwidth>
-            <soundSpeed>1500</soundSpeed>
-            <sourceLevel>220</sourceLevel>
-            <maxDistance>10</maxDistance>
-            <raySkips>1</raySkips>
-            <sensorGain>0.02</sensorGain>
-            <blazingSonarImage>true</blazingSonarImage>
-            <writeLog>false</writeLog>
-            <debugFlag>false</debugFlag>
-            <writeFrameInterval>5</writeFrameInterval>
-            <pointCloudTopicName>point_cloud_64</pointCloudTopicName>
-            <sonarImageRawTopicName>sonar_image_raw_64</sonarImageRawTopicName>
-            <sonarImageTopicName>sonar_image_64</sonarImageTopicName>
-            <frameName>sonar_3d_link_64</frameName>
-          </spec>
-        </gz:multibeam_sonar>
-      </sensor>
-      <sensor name="sonar_3d_65" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.335103 0</pose>
-        <always_on>true</always_on>
-        <update_rate>30.0</update_rate>
-        <topic>/sensor/sonar_3d/beam_65</topic>
-        <visualize>true</visualize>
-        <gz:multibeam_sonar>
-        <ray degrees="false">
-          <scan>
-            <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
-            </horizontal>
-            <vertical>
-              <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
-            </vertical>
-          </scan>
-          <range>
-            <min>0.1</min>
-            <max>10.0</max>
-          </range>
-        </ray>
-          <spec>
-            <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
-            <bandwidth>29.9e3</bandwidth>
-            <soundSpeed>1500</soundSpeed>
-            <sourceLevel>220</sourceLevel>
-            <maxDistance>10</maxDistance>
-            <raySkips>1</raySkips>
-            <sensorGain>0.02</sensorGain>
-            <blazingSonarImage>true</blazingSonarImage>
-            <writeLog>false</writeLog>
-            <debugFlag>false</debugFlag>
-            <writeFrameInterval>5</writeFrameInterval>
-            <pointCloudTopicName>point_cloud_65</pointCloudTopicName>
-            <sonarImageRawTopicName>sonar_image_raw_65</sonarImageRawTopicName>
-            <sonarImageTopicName>sonar_image_65</sonarImageTopicName>
-            <frameName>sonar_3d_link_65</frameName>
-          </spec>
-        </gz:multibeam_sonar>
-      </sensor>
-      <sensor name="sonar_3d_66" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 0.345575 0</pose>
-        <always_on>true</always_on>
-        <update_rate>30.0</update_rate>
-        <topic>/sensor/sonar_3d/beam_66</topic>
-        <visualize>true</visualize>
-        <gz:multibeam_sonar>
-        <ray degrees="false">
-          <scan>
-            <horizontal>
-              <beams>258</beams>
-              <min_angle>-0.785398</min_angle>
-              <max_angle>0.785398</max_angle>
-            </horizontal>
-            <vertical>
-              <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
-            </vertical>
-          </scan>
-          <range>
-            <min>0.1</min>
-            <max>10.0</max>
-          </range>
-        </ray>
-          <spec>
-            <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
-            <bandwidth>29.9e3</bandwidth>
-            <soundSpeed>1500</soundSpeed>
-            <sourceLevel>220</sourceLevel>
-            <maxDistance>10</maxDistance>
-            <raySkips>1</raySkips>
-            <sensorGain>0.02</sensorGain>
-            <blazingSonarImage>true</blazingSonarImage>
-            <writeLog>false</writeLog>
-            <debugFlag>false</debugFlag>
-            <writeFrameInterval>5</writeFrameInterval>
-            <pointCloudTopicName>point_cloud_66</pointCloudTopicName>
-            <sonarImageRawTopicName>sonar_image_raw_66</sonarImageRawTopicName>
-            <sonarImageTopicName>sonar_image_66</sonarImageTopicName>
-            <frameName>sonar_3d_link_66</frameName>
           </spec>
         </gz:multibeam_sonar>
       </sensor>
