@@ -7,17 +7,31 @@ import math
 # Beam separation: 0.35° (horizontal) / 0.60° (vertical)
 # Angular resolution: 0.85° (horizontal) / 1.60° (vertical)
 
-field_of_view_vertical_deg = 40.0
-elevation_step_deg = 0.60
-num_sensors = int(field_of_view_vertical_deg / elevation_step_deg) + 1 # 67 sensors
+# ------------- vertical ------------------------
+sonar_3d_vertical_resolution = 64
+sonar_3d_vertical_fov_deg = 40.0
+sonar_3d_vertical_seperation_deg = 0.60
+sonar_3d_vertical_angular_resolution = 1.6 # deg
+sonar_3d_vertical_start_rad = math.radians(-20.0 + 1.10) # first sensor is -20 + 0.8 + 0.3 because we need to get the center point
+sonar_3d_vertical_end_rad = math.radians(20.0 - 1.10)
 
-horizontal_fov_deg = 90.0
-horizontal_min_angle_rad = math.radians(-45.0)
-horizontal_max_angle_rad = math.radians(45.0)
-horizontal_beam_separation_deg = 0.35
-num_beams = int(horizontal_fov_deg / horizontal_beam_separation_deg) + 1 # 258 beams
+multibeam_vertical_min_angle_rad = math.radians(-sonar_3d_vertical_angular_resolution / 2.0)
+multibeam_vertical_max_angle_rad = math.radians(sonar_3d_vertical_angular_resolution / 2.0)
+multibeam_vertical_num_sensors = sonar_3d_vertical_resolution # 64 sensors
+multibeam_vertical_fov_deg = sonar_3d_vertical_angular_resolution
 
-vertical_angular_resolution_deg = 1.6 # Used for verticalFOV
+# ------------- horizontal ------------------------
+sonar_3d_horizontal_resolution = 256
+sonar_3d_horizontal_fov_deg = 90.0
+sonar_3d_horizontal_seperation_deg = 0.35
+sonar_3d_horizontal_angular_resolution = 0.85
+sonar_3d_horizontal_start_rad = math.radians(-44.975) # from 128 * 0.35 + 0.175
+sonar_3d_horizontal_end_rad = math.radians(44.975)
+
+multibeam_horizontal_min_angle_rad = sonar_3d_horizontal_start_rad
+multibeam_horizontal_max_angle_rad = sonar_3d_horizontal_end_rad
+multibeam_horizontal_num_beams = sonar_3d_horizontal_resolution # 256 beams
+
 
 out_dir = "/home/aki/auv_ws/src/dave/models/dave_sensor_models/3d_sonar"
 os.makedirs(out_dir, exist_ok=True)
@@ -32,7 +46,7 @@ config_content = f"""<?xml version="1.0"?>
   <version>1.0</version>
   <sdf version="1.9">model.sdf</sdf>
   <description>
-    {num_sensors} multibeam sonars stacked with {elevation_step_deg} degree elevation difference.
+    {multibeam_vertical_num_sensors} multibeam sonars stacked with {sonar_3d_vertical_seperation_deg} degree elevation difference.
     Horizontal FOV: 90 deg, Vertical FOV: 40 deg.
   </description>
 </model>
@@ -79,14 +93,14 @@ sdf_content = """<?xml version="1.0" ?>
 """
 
 # Generate sensors
-for i in range(num_sensors):
+for i in range(multibeam_vertical_num_sensors):
     # center around 0
-    pitch_deg = (i - (num_sensors - 1) / 2.0) * elevation_step_deg
-    pitch_rad = math.radians(pitch_deg)
-    
+    # start at sonar_3d_vertical_start_rad and step with sonar_3d_vertical_seperation_deg
+    pitch_rad = sonar_3d_vertical_start_rad + i * math.radians(sonar_3d_vertical_seperation_deg)
+    print(f"Generating sensor {i} with pitch {math.degrees(pitch_rad):.6f}")
     sensor_xml = f"""
       <sensor name="sonar_3d_{i}" type="custom" gz:type="multibeam_sonar">
-        <pose>0 0 0 0 {pitch_rad:.6f} 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <always_on>true</always_on>
         <update_rate>30.0</update_rate>
         <topic>/sensor/sonar_3d/beam_{i}</topic>
@@ -95,14 +109,14 @@ for i in range(num_sensors):
         <ray degrees="false">
           <scan>
             <horizontal>
-              <beams>{num_beams}</beams>
-              <min_angle>{horizontal_min_angle_rad:.6f}</min_angle>
-              <max_angle>{horizontal_max_angle_rad:.6f}</max_angle>
+              <beams>{multibeam_horizontal_num_beams}</beams>
+              <min_angle>{multibeam_horizontal_min_angle_rad:.6f}</min_angle>
+              <max_angle>{multibeam_horizontal_max_angle_rad:.6f}</max_angle>
             </horizontal>
             <vertical>
               <rays>1</rays>
-              <min_angle>-0.00174532925</min_angle>
-              <max_angle>0.00174532925</max_angle>
+              <min_angle>{multibeam_vertical_min_angle_rad:.6f}</min_angle>
+              <max_angle>{multibeam_vertical_max_angle_rad:.6f}</max_angle>
             </vertical>
           </scan>
           <range>
@@ -111,7 +125,7 @@ for i in range(num_sensors):
           </range>
         </ray>
           <spec>
-            <verticalFOV>{vertical_angular_resolution_deg}</verticalFOV>
+            <verticalFOV>{multibeam_vertical_fov_deg}</verticalFOV>
             <sonarFreq>900e3</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
@@ -142,5 +156,5 @@ sdf_content += """
 with open(model_sdf_path, "w") as f:
     f.write(sdf_content)
 
-print(f"Generated {num_sensors} sonar sensors in {model_sdf_path}")
+print(f"Generated {multibeam_vertical_num_sensors} sonar sensors in {model_sdf_path}")
 
