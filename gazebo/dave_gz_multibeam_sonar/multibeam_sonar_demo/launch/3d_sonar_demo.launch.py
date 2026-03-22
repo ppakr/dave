@@ -47,25 +47,24 @@ def generate_launch_description():
     )
 
     # RViz Config
-    # pkg_dave_multibeam_sonar_demo = get_package_share_directory("dave_multibeam_sonar_demo")
+    pkg_dave_multibeam_sonar_demo = get_package_share_directory("dave_multibeam_sonar_demo")
     
-    # We load the existing rviz config, but note that 3d_sonar points
-    # will publish slightly differently across many topics, so a custom 
-    # RViz config might ultimately be needed.
-    # rviz = Node(
-    #     package="rviz2",
-    #     executable="rviz2",
-    #     arguments=[
-    #         "-d",
-    #         os.path.join(pkg_dave_multibeam_sonar_demo, "rviz", "multibeam_sonar.rviz"),
-    #     ],
-    #     condition=IfCondition(LaunchConfiguration("rviz")),
-    # )
+    # We load the newly generated rviz config which specifically includes
+    # all 64 distinct point clouds overlaid.
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=[
+            "-d",
+            os.path.join(pkg_dave_multibeam_sonar_demo, "rviz", "3d_sonar_demo.rviz"),
+        ],
+        condition=IfCondition(LaunchConfiguration("rviz")),
+    )
 
     return LaunchDescription(
         [
             multibeam_sonar_sim,
-            # DeclareLaunchArgument("rviz", default_value="true", description="Open RViz."),
-            # rviz,
+            DeclareLaunchArgument("rviz", default_value="true", description="Open RViz."),
+            rviz,
         ]
     )
