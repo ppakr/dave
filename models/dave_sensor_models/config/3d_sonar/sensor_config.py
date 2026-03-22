@@ -6,10 +6,10 @@ def generate_launch_description():
     bridge_args = []
     tf_nodes = []
     
-    num_sensors = 67
+    num_sensors = 64    
     elevation_step_deg = 0.60
     
-    # Map points for 67 multibeam sonars and create their TFs
+    # Map points for 64 multibeam sonars and create their TFs
     for i in range(num_sensors):
         # 1. Bridge the PointCloud
         bridge_args.append(f"/sensor/sonar_3d/beam_{i}/point_cloud_{i}@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked")
@@ -23,7 +23,7 @@ def generate_launch_description():
             executable="static_transform_publisher",
             name=f"tf_sonar_{i}",
             arguments=[
-                "0", "0", "0", "0", f"{pitch_rad:.6f}", "0", # X, Y, Z, Roll, Pitch, Yaw
+                "0", "0", "0", "0", "0", "0", # X, Y, Z, Roll, Pitch, Yaw
                 "3d_sonar/base_link",
                 f"3d_sonar/base_link/sonar_3d_{i}"
             ],
