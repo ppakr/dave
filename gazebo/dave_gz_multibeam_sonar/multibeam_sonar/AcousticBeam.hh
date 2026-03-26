@@ -26,6 +26,7 @@ public:
     using Quaterniond = gz::math::Quaterniond;
 
     // Rotação extrínseca XY (rot_x * rot_y)
+    // (fix): instead of rotating XY -> rotating ZY (according to the paper)
     this->transform.Rot() = Quaterniond::EulerToQuaternion(0.0, 0., _rotationAngle.Radian()) *
                             Quaterniond::EulerToQuaternion(0., _tiltAngle.Radian(), 0.);
 
