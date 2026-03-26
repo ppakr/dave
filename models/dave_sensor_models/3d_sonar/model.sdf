@@ -49,7 +49,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.343830</min_angle>
               <max_angle>-0.315905</max_angle>
             </vertical>
@@ -94,7 +94,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.333358</min_angle>
               <max_angle>-0.305433</max_angle>
             </vertical>
@@ -139,7 +139,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.322886</min_angle>
               <max_angle>-0.294961</max_angle>
             </vertical>
@@ -184,7 +184,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.312414</min_angle>
               <max_angle>-0.284489</max_angle>
             </vertical>
@@ -229,7 +229,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.301942</min_angle>
               <max_angle>-0.274017</max_angle>
             </vertical>
@@ -274,7 +274,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.291470</min_angle>
               <max_angle>-0.263545</max_angle>
             </vertical>
@@ -319,7 +319,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.280998</min_angle>
               <max_angle>-0.253073</max_angle>
             </vertical>
@@ -364,7 +364,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.270526</min_angle>
               <max_angle>-0.242601</max_angle>
             </vertical>
@@ -409,7 +409,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.260054</min_angle>
               <max_angle>-0.232129</max_angle>
             </vertical>
@@ -454,7 +454,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.249582</min_angle>
               <max_angle>-0.221657</max_angle>
             </vertical>
@@ -499,7 +499,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.239110</min_angle>
               <max_angle>-0.211185</max_angle>
             </vertical>
@@ -544,7 +544,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.228638</min_angle>
               <max_angle>-0.200713</max_angle>
             </vertical>
@@ -589,7 +589,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.218166</min_angle>
               <max_angle>-0.190241</max_angle>
             </vertical>
@@ -634,7 +634,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.207694</min_angle>
               <max_angle>-0.179769</max_angle>
             </vertical>
@@ -679,7 +679,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.197222</min_angle>
               <max_angle>-0.169297</max_angle>
             </vertical>
@@ -724,7 +724,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.186750</min_angle>
               <max_angle>-0.158825</max_angle>
             </vertical>
@@ -769,7 +769,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.176278</min_angle>
               <max_angle>-0.148353</max_angle>
             </vertical>
@@ -814,7 +814,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.165806</min_angle>
               <max_angle>-0.137881</max_angle>
             </vertical>
@@ -859,7 +859,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.155334</min_angle>
               <max_angle>-0.127409</max_angle>
             </vertical>
@@ -904,7 +904,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.144862</min_angle>
               <max_angle>-0.116937</max_angle>
             </vertical>
@@ -949,7 +949,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.134390</min_angle>
               <max_angle>-0.106465</max_angle>
             </vertical>
@@ -994,7 +994,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.123918</min_angle>
               <max_angle>-0.095993</max_angle>
             </vertical>
@@ -1039,7 +1039,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.113446</min_angle>
               <max_angle>-0.085521</max_angle>
             </vertical>
@@ -1084,7 +1084,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.102974</min_angle>
               <max_angle>-0.075049</max_angle>
             </vertical>
@@ -1129,7 +1129,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.092502</min_angle>
               <max_angle>-0.064577</max_angle>
             </vertical>
@@ -1174,7 +1174,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.082030</min_angle>
               <max_angle>-0.054105</max_angle>
             </vertical>
@@ -1219,7 +1219,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.071558</min_angle>
               <max_angle>-0.043633</max_angle>
             </vertical>
@@ -1264,7 +1264,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.061087</min_angle>
               <max_angle>-0.033161</max_angle>
             </vertical>
@@ -1309,7 +1309,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.050615</min_angle>
               <max_angle>-0.022689</max_angle>
             </vertical>
@@ -1354,7 +1354,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.040143</min_angle>
               <max_angle>-0.012217</max_angle>
             </vertical>
@@ -1399,7 +1399,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.029671</min_angle>
               <max_angle>-0.001745</max_angle>
             </vertical>
@@ -1444,7 +1444,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.019199</min_angle>
               <max_angle>0.008727</max_angle>
             </vertical>
@@ -1489,7 +1489,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>-0.008727</min_angle>
               <max_angle>0.019199</max_angle>
             </vertical>
@@ -1534,7 +1534,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.001745</min_angle>
               <max_angle>0.029671</max_angle>
             </vertical>
@@ -1579,7 +1579,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.012217</min_angle>
               <max_angle>0.040143</max_angle>
             </vertical>
@@ -1624,7 +1624,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.022689</min_angle>
               <max_angle>0.050615</max_angle>
             </vertical>
@@ -1669,7 +1669,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.033161</min_angle>
               <max_angle>0.061087</max_angle>
             </vertical>
@@ -1714,7 +1714,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.043633</min_angle>
               <max_angle>0.071558</max_angle>
             </vertical>
@@ -1759,7 +1759,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.054105</min_angle>
               <max_angle>0.082030</max_angle>
             </vertical>
@@ -1804,7 +1804,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.064577</min_angle>
               <max_angle>0.092502</max_angle>
             </vertical>
@@ -1849,7 +1849,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.075049</min_angle>
               <max_angle>0.102974</max_angle>
             </vertical>
@@ -1894,7 +1894,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.085521</min_angle>
               <max_angle>0.113446</max_angle>
             </vertical>
@@ -1939,7 +1939,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.095993</min_angle>
               <max_angle>0.123918</max_angle>
             </vertical>
@@ -1984,7 +1984,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.106465</min_angle>
               <max_angle>0.134390</max_angle>
             </vertical>
@@ -2029,7 +2029,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.116937</min_angle>
               <max_angle>0.144862</max_angle>
             </vertical>
@@ -2074,7 +2074,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.127409</min_angle>
               <max_angle>0.155334</max_angle>
             </vertical>
@@ -2119,7 +2119,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.137881</min_angle>
               <max_angle>0.165806</max_angle>
             </vertical>
@@ -2164,7 +2164,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.148353</min_angle>
               <max_angle>0.176278</max_angle>
             </vertical>
@@ -2209,7 +2209,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.158825</min_angle>
               <max_angle>0.186750</max_angle>
             </vertical>
@@ -2254,7 +2254,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.169297</min_angle>
               <max_angle>0.197222</max_angle>
             </vertical>
@@ -2299,7 +2299,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.179769</min_angle>
               <max_angle>0.207694</max_angle>
             </vertical>
@@ -2344,7 +2344,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.190241</min_angle>
               <max_angle>0.218166</max_angle>
             </vertical>
@@ -2389,7 +2389,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.200713</min_angle>
               <max_angle>0.228638</max_angle>
             </vertical>
@@ -2434,7 +2434,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.211185</min_angle>
               <max_angle>0.239110</max_angle>
             </vertical>
@@ -2479,7 +2479,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.221657</min_angle>
               <max_angle>0.249582</max_angle>
             </vertical>
@@ -2524,7 +2524,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.232129</min_angle>
               <max_angle>0.260054</max_angle>
             </vertical>
@@ -2569,7 +2569,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.242601</min_angle>
               <max_angle>0.270526</max_angle>
             </vertical>
@@ -2614,7 +2614,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.253073</min_angle>
               <max_angle>0.280998</max_angle>
             </vertical>
@@ -2659,7 +2659,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.263545</min_angle>
               <max_angle>0.291470</max_angle>
             </vertical>
@@ -2704,7 +2704,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.274017</min_angle>
               <max_angle>0.301942</max_angle>
             </vertical>
@@ -2749,7 +2749,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.284489</min_angle>
               <max_angle>0.312414</max_angle>
             </vertical>
@@ -2794,7 +2794,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.294961</min_angle>
               <max_angle>0.322886</max_angle>
             </vertical>
@@ -2839,7 +2839,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.305433</min_angle>
               <max_angle>0.333358</max_angle>
             </vertical>
@@ -2884,7 +2884,7 @@
               <max_angle>0.784962</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>0.315905</min_angle>
               <max_angle>0.343830</max_angle>
             </vertical>

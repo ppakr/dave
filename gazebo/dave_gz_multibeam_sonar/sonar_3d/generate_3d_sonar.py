@@ -114,7 +114,7 @@ for i in range(multibeam_vertical_num_sensors):
               <max_angle>{multibeam_horizontal_max_angle_rad:.6f}</max_angle>
             </horizontal>
             <vertical>
-              <rays>1</rays>
+              <rays>10</rays>
               <min_angle>{pitch_rad + multibeam_vertical_min_angle_rad:.6f}</min_angle>
               <max_angle>{pitch_rad + multibeam_vertical_max_angle_rad:.6f}</max_angle>
             </vertical>
