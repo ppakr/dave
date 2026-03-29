@@ -2,35 +2,43 @@ import math
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+
 def generate_launch_description():
     bridge_args = []
     tf_nodes = []
-    
-    num_sensors = 64    
+
+    num_sensors = 64
     elevation_step_deg = 0.60
-    
+
     # Map points for 64 multibeam sonars and create their TFs
     for i in range(num_sensors):
         # 1. Bridge the PointCloud
-        bridge_args.append(f"/sensor/sonar_3d/beam_{i}/point_cloud_{i}@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked")
-        
+        bridge_args.append(
+            f"/sensor/sonar_3d/beam_{i}/point_cloud_{i}@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked"
+        )
+
         # 2. Add static transform publisher for each sensor's pose
         pitch_deg = (i - (num_sensors - 1) / 2.0) * elevation_step_deg
         pitch_rad = math.radians(pitch_deg)
-        
+
         tf_node = Node(
             package="tf2_ros",
             executable="static_transform_publisher",
             name=f"tf_sonar_{i}",
             arguments=[
-                "0", "0", "0", "0", "0", "0", # X, Y, Z, Roll, Pitch, Yaw
+                "0",
+                "0",
+                "0",
+                "0",
+                f"{pitch_rad:.6f}",
+                "0",  # X, Y, Z, Roll, Pitch, Yaw
                 "3d_sonar/base_link",
-                f"3d_sonar/base_link/sonar_3d_{i}"
+                f"3d_sonar/base_link/sonar_3d_{i}",
             ],
-            output="screen"
+            output="screen",
         )
         tf_nodes.append(tf_node)
-        
+
     bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
