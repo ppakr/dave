@@ -15,6 +15,9 @@ find_package(gz-plugin2 REQUIRED COMPONENTS register)
 find_package(gz-rendering8 REQUIRED OPTIONAL_COMPONENTS ogre ogre2)
 find_package(gz-sim8 REQUIRED)
 find_package(gz-sensors8 REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(marine_acoustic_msgs REQUIRED)
 
 set(GZ_COMMON_VER ${gz-common5_VERSION_MAJOR})
 set(GZ_PLUGIN_VER ${gz-plugin2_VERSION_MAJOR})
@@ -45,8 +48,17 @@ ament_target_dependencies(${PROJECT_NAME}
     gz-sensors${GZ_SENSORS_VER}
   )
 
+# Sonar aggregator node: subscribes to 64 ProjectedSonarImage topics and
+# publishes a combined PointCloud2.
+add_executable(sonar_aggregator src/Sonar3D.cc)
+ament_target_dependencies(sonar_aggregator
+  rclcpp
+  sensor_msgs
+  marine_acoustic_msgs
+)
+
 # Install targets
-install(TARGETS ${PROJECT_NAME}
+install(TARGETS ${PROJECT_NAME} sonar_aggregator
     DESTINATION lib/${PROJECT_NAME}
   )
 
