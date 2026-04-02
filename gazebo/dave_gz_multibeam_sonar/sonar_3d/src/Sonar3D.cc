@@ -252,6 +252,9 @@ private:
     // Data layout: rows=ranges, cols=beams (row-major).
     // Find the range index of maximum intensity for each beam (column).
     std::vector<uint32_t> max_indices(beam_count, 0);
+    std::vector<float> max_values(beam_count, 0.0f);
+    float threshold{60.0f};  // set threshold to filter out low intensity values, this can be tuned
+                             // based on the expected intensity range
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       double max_val = -1.0;
@@ -266,9 +269,11 @@ private:
           max_idx = range;
         }
       }
-      std::cout << "Sonar " << sonar_idx << ", Beam " << beam << ": max intensity at range index "
-                << max_idx << " with value " << max_val << std::endl;
+      // std::cout << "Sonar " << sonar_idx << ", Beam " << beam << ": max intensity at range index
+      // "
+      //           << max_idx << " with value " << max_val << std::endl;
       max_indices[beam] = max_idx;
+      max_values[beam] = static_cast<float>(max_val);
     }
 
     // Project each beam's max-intensity sample into 3-D space.
@@ -285,6 +290,10 @@ private:
     points.reserve(beam_count);
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
+      if (max_values[beam] < threshold)
+      {
+        continue;  // skip low intensity beams
+      }
       float r = msg->ranges[max_indices[beam]];
       const auto & dir = msg->beam_directions[beam];
       const float lx = static_cast<float>(dir.x);
@@ -292,10 +301,10 @@ private:
       points.push_back({r * cos_p * lx, r * ly, r * sin_p * lx});
     }
 
-    if (points.empty())
-    {
-      return;
-    }
+    // if (points.empty())
+    // {
+    //   return;
+    // }
 
     // Store this sonar's points and track receipt.
     if (!received_[sonar_idx])
