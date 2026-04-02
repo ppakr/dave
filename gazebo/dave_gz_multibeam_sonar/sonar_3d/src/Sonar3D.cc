@@ -2,8 +2,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include <sensor_msgs/point_cloud2_iterator.hpp>
+#include <std_msgs/msg/header.hpp>
 
 #include <array>
+#include <cmath>
 #include <cstdint>
 #include <cstring>
 #include <string>
@@ -11,11 +13,27 @@
 
 constexpr int NUM_SONARS = 64;
 
+// Pitch angle for sensor i, matching generate_3d_sonar.py:
+//   pitch_i = radians(-20.0 + 1.10 + i * 0.60)
+// Sensor 0 is most downward (-18.9 deg), sensor 63 is most upward (+18.9 deg).
+static float sonar_pitch_rad(int i)
+{
+  constexpr double deg2rad = M_PI / 180.0;
+  return static_cast<float>((-20.0 + 1.10 + i * 0.60) * deg2rad);
+}
+
+struct Point3f
+{
+  float x, y, z;
+};
+
 class SonarAggregator : public rclcpp::Node
 {
 public:
-  SonarAggregator() : Node("sonar_aggregator")
+  SonarAggregator() : Node("sonar_aggregator"), received_count_(0)
   {
+    received_.fill(false);
+
     pc_pub_ =
       this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensor/sonar_3d/pointcloud", 10);
 
@@ -171,7 +189,7 @@ private:
   }
 
   static sensor_msgs::msg::PointCloud2 create_point_cloud(
-    const std_msgs::msg::Header & header, const std::vector<std::array<float, 3>> & points)
+    const std_msgs::msg::Header & header, const std::vector<Point3f> & points)
   {
     sensor_msgs::msg::PointCloud2 cloud;
     cloud.header = header;
@@ -190,9 +208,9 @@ private:
 
     for (const auto & pt : points)
     {
-      *iter_x = pt[0];
-      *iter_y = pt[1];
-      *iter_z = pt[2];
+      *iter_x = pt.x;
+      *iter_y = pt.y;
+      *iter_z = pt.z;
       ++iter_x;
       ++iter_y;
       ++iter_z;
@@ -248,30 +266,71 @@ private:
           max_idx = range;
         }
       }
+      std::cout << "Sonar " << sonar_idx << ", Beam " << beam << ": max intensity at range index "
+                << max_idx << " with value " << max_val << std::endl;
       max_indices[beam] = max_idx;
     }
 
     // Project each beam's max-intensity sample into 3-D space.
-    std::vector<std::array<float, 3>> points;
+    // beam_directions from the plugin are in the sensor's LOCAL frame (z=0 always).
+    // Rotate into the common frame by applying the sensor's pitch about the Y-axis:
+    //   x' = cos(pitch) * dir.x
+    //   y' = dir.y
+    //   z' = sin(pitch) * dir.x
+    const float pitch = sonar_pitch_rad(sonar_idx);
+    const float cos_p = std::cos(pitch);
+    const float sin_p = std::sin(pitch);
+
+    std::vector<Point3f> points;
     points.reserve(beam_count);
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       float r = msg->ranges[max_indices[beam]];
       const auto & dir = msg->beam_directions[beam];
-      points.push_back(
-        {r * static_cast<float>(dir.x), r * static_cast<float>(dir.y),
-         r * static_cast<float>(dir.z)});
+      const float lx = static_cast<float>(dir.x);
+      const float ly = static_cast<float>(dir.y);
+      points.push_back({r * cos_p * lx, r * ly, r * sin_p * lx});
     }
 
-    if (!points.empty())
+    if (points.empty())
     {
-      pc_pub_->publish(create_point_cloud(msg->header, points));
+      return;
+    }
+
+    // Store this sonar's points and track receipt.
+    if (!received_[sonar_idx])
+    {
+      received_[sonar_idx] = true;
+      sonar_points_[sonar_idx] = std::move(points);
+      latest_header_ = msg->header;
+      ++received_count_;
+    }
+
+    // Once all sonars have reported, combine and publish.
+    if (received_count_ == NUM_SONARS)
+    {
+      std::vector<Point3f> combined;
+      for (auto & pts : sonar_points_)
+      {
+        combined.insert(combined.end(), pts.begin(), pts.end());
+        pts.clear();
+      }
+      // Points have been rotated into the model's base_link frame.
+      latest_header_.frame_id = "3d_sonar/base_link";
+      pc_pub_->publish(create_point_cloud(latest_header_, combined));
+      received_.fill(false);
+      received_count_ = 0;
     }
   }
 
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pc_pub_;
   std::vector<rclcpp::Subscription<marine_acoustic_msgs::msg::ProjectedSonarImage>::SharedPtr>
     subscriptions_;
+
+  std::array<std::vector<Point3f>, NUM_SONARS> sonar_points_;
+  std::array<bool, NUM_SONARS> received_;
+  size_t received_count_;
+  std_msgs::msg::Header latest_header_;
 };
 
 int main(int argc, char * argv[])
