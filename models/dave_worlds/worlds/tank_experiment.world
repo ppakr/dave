@@ -138,26 +138,5 @@
       <static>true</static>
     </include>
 
-    <!--
-      Debug target: 0.3 m box at 1.0 m in front of the sonar (sonar spawns at x=-0.85).
-      Remove once sonar detection is confirmed.
-    -->
-    <model name="debug_target">
-      <static>true</static>
-      <pose>0.15 0 0.3 0 0 0</pose>
-      <link name="link">
-        <visual name="visual">
-          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
-          <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
-          </material>
-        </visual>
-        <collision name="collision">
-          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
-        </collision>
-      </link>
-    </model>
-
   </world>
 </sdf>
