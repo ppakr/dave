@@ -253,7 +253,7 @@ private:
     // Find the range index of maximum intensity for each beam (column).
     std::vector<uint32_t> max_indices(beam_count, 0);
     std::vector<float> max_values(beam_count, 0.0f);
-    float threshold{-200.0f};  // disabled for debugging — set to actual dB floor once sim values known
+    float threshold{60.0f};
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       double max_val = -1.0;
