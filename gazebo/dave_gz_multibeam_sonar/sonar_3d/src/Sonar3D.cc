@@ -253,8 +253,7 @@ private:
     // Find the range index of maximum intensity for each beam (column).
     std::vector<uint32_t> max_indices(beam_count, 0);
     std::vector<float> max_values(beam_count, 0.0f);
-    float threshold{60.0f};  // set threshold to filter out low intensity values, this can be tuned
-                             // based on the expected intensity range
+    float threshold{-200.0f};  // disabled for debugging — set to actual dB floor once sim values known
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       double max_val = -1.0;
@@ -274,6 +273,16 @@ private:
       //           << max_idx << " with value " << max_val << std::endl;
       max_indices[beam] = max_idx;
       max_values[beam] = static_cast<float>(max_val);
+    }
+
+    // Log intensity range once per sonar on its first message to aid threshold calibration.
+    if (!received_[sonar_idx])
+    {
+      float min_v = *std::min_element(max_values.begin(), max_values.end());
+      float max_v = *std::max_element(max_values.begin(), max_values.end());
+      RCLCPP_INFO(
+        this->get_logger(), "Sonar %d first msg: beam dB range [%.1f, %.1f]", sonar_idx, min_v,
+        max_v);
     }
 
     // Project each beam's max-intensity sample into 3-D space.
