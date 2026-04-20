@@ -53,3 +53,4 @@ log/
 install/
 logs/
 eeprom.bin
+debug_timings.txt
