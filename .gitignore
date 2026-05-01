@@ -54,3 +54,4 @@ install/
 logs/
 eeprom.bin
 debug_timings.txt
+CLAUDE.md
