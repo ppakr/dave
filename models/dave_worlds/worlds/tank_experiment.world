@@ -130,13 +130,26 @@
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
     </include>
 
-    <!-- WaterLinked wetlab tank -->
+    <!-- WaterLinked wetlab tank (local model, water surface built in) -->
     <include>
-      <uri>https://fuel.gazebosim.org/1.0/ppakr/models/WL_wetlab_tank</uri>
+      <uri>model://WL_wetlab_tank</uri>
       <name>wl_tank</name>
       <pose>0 0 0 0 0 0</pose>
       <static>true</static>
     </include>
+
+    <!-- Buoyancy: water below z=1.0 (tank water level), air above -->
+    <plugin
+      filename="gz-sim-buoyancy-system"
+      name="gz::sim::systems::Buoyancy">
+      <graded_buoyancy>
+        <default_density>1000</default_density>
+        <density_change>
+          <above_depth>1.0</above_depth>
+          <density>1</density>
+        </density_change>
+      </graded_buoyancy>
+    </plugin>
 
   </world>
 </sdf>

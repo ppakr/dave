@@ -55,3 +55,4 @@ logs/
 eeprom.bin
 debug_timings.txt
 CLAUDE.md
+models/dave_object_models/hooks/dave_object_models.dsv.in
