@@ -19,7 +19,8 @@ pitch, and republishes a single combined point cloud.
 
 ## Running
 
-There are two launch files depending on which scene you want.
+Pick a scene, start its sim launch, wait for the beams to initialize, then
+bring up visualization.
 
 ### Option A — DAVE multibeam sonar test world
 
@@ -29,6 +30,9 @@ The original DAVE sonar scene (sonar pointed at sample objects in
 ```bash
 ros2 launch dave_multibeam_sonar_demo 3d_sonar_demo.launch.py
 ```
+
+This launch opens RViz itself; `rviz:=false` skips it. Start the aggregator
+separately (see below).
 
 ### Option B — WaterLinked wetlab tank
 
@@ -40,18 +44,63 @@ Gazebo Fuel on first launch):
 ros2 launch sonar_3d_demo tank_experiment.launch.py
 ```
 
-### Then start the aggregator
+This launch also opens RViz itself; `rviz:=false` skips it.
 
-Either launch spawns the 64 beams asynchronously and opens RViz. **Wait
-until all beams have initialized** (you'll see them publishing in RViz /
-`ros2 topic hz`) before starting the aggregator, or some beams will be
-missing from the first cloud:
+### Option C — square metal target in the wetlab tank
+
+A variant of the wetlab-tank scene with a `square_metal` model placed 1.5 m
+straight ahead of the sonar and 0.75 m below the water surface
+(`square_metal_demo.world`; the `square_metal` model lives in
+`dave_object_models/description/`). Unlike A and B, this launch is **sim
+only** — RViz and the aggregator come from `viz.launch.py`:
 
 ```bash
-ros2 run sonar_3d sonar_aggregator
+# terminal 1 — sim
+ros2 launch sonar_3d_demo square_metal_demo.launch.py
+
+# terminal 2 — once the beams have initialized (see below)
+ros2 launch sonar_3d_demo viz.launch.py
 ```
 
-Both launches accept `rviz:=false` to skip the RViz window.
+`viz.launch.py` runs `sonar_aggregator` and RViz together. Arguments:
+`rviz:=false` to skip RViz, `rviz_config:=/path/to/foo.rviz` to use a
+different layout (defaults to `sonar_3d_demo/rviz/square_metal_demo.rviz`).
+
+### Starting the aggregator
+
+The sim launch spawns the 64 beams asynchronously. **Wait until all beams
+have initialized** before starting the aggregator, or some beams will be
+missing from the first cloud — watch the Gazebo log until the
+`Initializing [3d_sonar::base_link::sonar_3d_<i>] sensor` lines stop
+(~20–30 s), or check `ros2 topic hz` on a high-numbered beam.
+
+- For scenes A and B, run it directly:
+
+  ```bash
+  ros2 run sonar_3d sonar_aggregator
+  ```
+
+- For scene C it is already part of `viz.launch.py` (start that launch only
+  after the beams are up).
+
+### Gotcha — clean up before re-launching
+
+`gz sim` ignores `SIGTERM`, so a `Ctrl+C`'d run can leave an orphaned
+`gz sim` (plus stray `static_transform_publisher` / `rviz2` /
+`parameter_bridge` processes) behind. The next launch then collides with
+them: Gazebo hangs or exits, `ros2 launch` tears everything down with
+`SIGINT` → `SIGTERM`, and RViz never shows. Hard-kill the stragglers
+between runs:
+
+```bash
+pkill -9 -f "gz sim"; pkill -9 -f "/usr/bin/gz"; pkill -9 -f ruby
+pkill -9 -f rviz2; pkill -9 -f parameter_bridge; pkill -9 -f static_transform_publisher
+sleep 2
+```
+
+If launches still die after a clean kill, suspect the GPU/EGL stack
+(`libEGL warning: egl: failed to create dri2 screen` in the log) — try
+`LIBGL_ALWAYS_SOFTWARE=1` or `headless:=true` to isolate it.
 
 ## Topics
 
