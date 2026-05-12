@@ -71,23 +71,42 @@ sdf_content = """<?xml version="1.0" ?>
           <izz>0.0151357</izz>
         </inertia>
       </inertial>
-      <visual name="blueview_p900_base_link_visual">
-        <pose>0 0 0 0 0 0</pose>
+      <visual name="wl_sonar_3d_body3_visual">
+        <pose>0 0 0 3.141592653589793 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://meshes/blueview_p900/p900.dae</uri>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://meshes/wl_sonar_3d/body3_visual.obj</uri>
           </mesh>
         </geometry>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
-      <collision name="blueview_p900_base_link_collision">
-        <pose>0 0 0 0 0 0</pose>
+      <visual name="wl_sonar_3d_body4_visual">
+        <pose>0 0 0 3.141592653589793 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://meshes/blueview_p900/COLLISION-p900.dae</uri>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://meshes/wl_sonar_3d/body4_visual.obj</uri>
           </mesh>
+        </geometry>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <collision name="wl_sonar_3d_body3_collision">
+        <pose>0.024503619305017786 0.0 0.0 3.141592653589793 1.5707963267948966 0</pose>
+        <geometry>
+          <box>
+            <size>0.07995 0.12195 0.023007238610035577</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name="wl_sonar_3d_body4_collision">
+        <pose>-0.014513909746511683 -0.001782765812776349 -1.0989202708591333e-09 -3.068957276201641 1.57079628737013 0</pose>
+        <geometry>
+          <box>
+            <size>0.0799999976568633 0.12269241652215174 0.09751448382404103</size>
+          </box>
         </geometry>
       </collision>
 """
