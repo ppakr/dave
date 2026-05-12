@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<sdf version="1.11">
+  <model name="wl_sonar_3d">
+    <link name="base_link">
+      <inertial>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>1e-09</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-09</iyy>
+          <iyz>0</iyz>
+          <izz>1e-09</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <link name="wl_sonar_3d_body">
+      <pose relative_to="__model__">0.0 0.0 0.0 3.141592653589793 -0.0 0.0</pose>
+      <inertial>
+        <pose>0.24293575599225428 1.2722340908156013e-06 1.0526472669276883e-06 0.0 -0.0 0.0</pose>
+        <mass>38.040124314824105</mass>
+        <inertia>
+          <ixx>0.5985140892578029</ixx>
+          <ixy>1.0081716923097178e-05</ixy>
+          <ixz>1.290151158031393e-05</ixz>
+          <iyy>0.6543970334546101</iyy>
+          <iyz>1.4321571861179533e-06</iyz>
+          <izz>0.826244434569833</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="wl_sonar_3d_body3_visual">
+        <pose relative_to="__model__">0.0 0.0 0.0 3.141592653589793 -0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://meshes/wl_sonar_3d/body3_visual.obj</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name="wl_sonar_3d_body4_visual">
+        <pose relative_to="__model__">0.0 0.0 0.0 3.141592653589793 -0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://meshes/wl_sonar_3d/body4_visual.obj</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="wl_sonar_3d_body3_collision">
+        <pose relative_to="__model__">0.024503619305017786 0.0 0.0 3.141592653589793 1.5707963267948966 0</pose>
+        <geometry>
+          <box>
+            <size>0.07995 0.12195 0.023007238610035577</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name="wl_sonar_3d_body4_collision">
+        <pose relative_to="__model__">-0.014513909746511683 -0.001782765812776349 -1.0989202708591333e-09 -3.068957276201641 1.57079628737013 0</pose>
+        <geometry>
+          <box>
+            <size>0.0799999976568633 0.12269241652215174 0.09751448382404103</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="base_link_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>wl_sonar_3d_body</child>
+      <axis/>
+    </joint>
+  </model>
+</sdf>
