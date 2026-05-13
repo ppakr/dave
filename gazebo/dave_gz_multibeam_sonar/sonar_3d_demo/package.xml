@@ -12,6 +12,9 @@
   <exec_depend>sonar_3d</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
   <exec_depend>rviz2</exec_depend>
+  <exec_depend>dave_demos</exec_depend>
+  <exec_depend>dave_worlds</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

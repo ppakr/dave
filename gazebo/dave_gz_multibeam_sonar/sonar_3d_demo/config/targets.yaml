@@ -1,0 +1,57 @@
+# Target manifest for tank_scene.launch.py.
+#
+# `top_z_offset` is the distance from the model's origin to the highest point
+# of its mesh in world Z (= what the launch file treats as "top of target").
+# Values computed from the GLB bounding box (mesh frame, after the glTF
+# node's scale + rotation), then taken as the world-frame max-Z relative to
+# the model origin. Re-measure if you change a CAD model.
+#
+# `yaw` is the per-target default rotation about Z (rad). Override from the
+# command line with `yaw:=<value>`.
+#
+# The launch file computes:
+#   z_origin = scene.float_top_z - string_length - top_z_offset
+# so the *top* of the target ends up `string_length` metres below the float's
+# reference plane.
+
+scene:
+  float_top_z: 0.85          # m, world Z of the float reference plane
+                             # (= float model origin; must match the float
+                             # pose in tank_with_float.world)
+  default_xy: [0.65, 0.0]    # m, horizontal anchor under the float
+  default_string_length: 0.70  # m, top of target below float_top_z
+
+targets:
+  brick:
+    top_z_offset: 0.060
+    yaw: 0.0
+  circle_metal:
+    top_z_offset: 0.1745
+    yaw: 0.0
+  circle_petg:
+    top_z_offset: 0.1446
+    yaw: 0.0
+  circle_wood:
+    top_z_offset: 0.1446
+    yaw: 0.0
+  metal_board:
+    top_z_offset: 0.1175
+    yaw: 0.0
+  square_metal:
+    top_z_offset: 0.135
+    yaw: 1.5708
+  square_petg:
+    top_z_offset: 0.150
+    yaw: 1.5708
+  square_wood:
+    top_z_offset: 0.1775
+    yaw: 1.5708
+  triangle_metal:
+    top_z_offset: 0.0173
+    yaw: 0.0
+  triangle_petg:
+    top_z_offset: 0.0
+    yaw: 0.0
+  triangle_wood:
+    top_z_offset: 0.0
+    yaw: 0.0

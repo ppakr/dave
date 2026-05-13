@@ -8,6 +8,7 @@ if(CUDAToolkit_FOUND)
   install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
   install(DIRECTORY worlds DESTINATION share/${PROJECT_NAME})
   install(DIRECTORY rviz   DESTINATION share/${PROJECT_NAME})
+  install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 
   ament_environment_hooks(
     "${CMAKE_CURRENT_SOURCE_DIR}/hooks/${PROJECT_NAME}.dsv.in")

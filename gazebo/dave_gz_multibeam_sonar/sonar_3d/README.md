@@ -66,6 +66,54 @@ ros2 launch sonar_3d_demo viz.launch.py
 `rviz:=false` to skip RViz, `rviz_config:=/path/to/foo.rviz` to use a
 different layout (defaults to `sonar_3d_demo/rviz/square_metal_demo.rviz`).
 
+### Option D — parametric tank+float scene with selectable target
+
+A variant of scene C built for swapping between the full target library
+without editing the world file. The scene (tank, float, sonar, lights) is
+held constant in `tank_with_float.world`; the target is spawned at launch
+time from `~/blender_models/<target>/` using the per-target metadata in
+`sonar_3d_demo/config/targets.yaml`. Like scene C, this is **sim only** —
+RViz and the aggregator come from `viz.launch.py`.
+
+```bash
+# terminal 1 — sim, target selectable
+ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal
+ros2 launch sonar_3d_demo tank_scene.launch.py target:=triangle_wood
+ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick string_length:=0.50
+
+# terminal 2 — once the beams have initialized
+ros2 launch sonar_3d_demo viz.launch.py
+```
+
+Available targets (folder names under `~/blender_models/`, also keys in
+`config/targets.yaml`): `brick`, `circle_metal`, `circle_petg`,
+`circle_wood`, `metal_board`, `square_metal`, `square_petg`, `square_wood`,
+`triangle_metal`, `triangle_petg`, `triangle_wood`.
+
+Launch arguments:
+
+| Arg | Default | Meaning |
+|---|---|---|
+| `target` | *(required)* | Folder name under `~/blender_models/` |
+| `string_length` | YAML `scene.default_string_length` (`0.70 m`) | Distance from float-top to target-top |
+| `yaw` | YAML `targets.<target>.yaw` | Rotation about Z, rad |
+| `x`, `y` | YAML `scene.default_xy` (`(0.65, 0.0)`) | Horizontal anchor under the float |
+| `paused` | `false` | Start the sim paused |
+| `debug`, `verbosity_level` | `true`, `4` | Forwarded to `dave_sensor.launch.py` |
+
+Placement formula (computed in the launch file):
+
+```
+target_z_origin = scene.float_top_z - string_length - target.top_z_offset
+```
+
+where `top_z_offset` is the height of the target's top above its model
+origin (measured from the GLB bounding box; pre-computed in the YAML and
+**must be re-measured if you re-export a CAD model**). The `float_top_z`
+constant in the YAML must stay in sync with the float pose in
+`tank_with_float.world` — if you move the float in the world, update the
+YAML.
+
 ### Starting the aggregator
 
 The sim launch spawns the 64 beams asynchronously. **Wait until all beams
@@ -80,8 +128,8 @@ missing from the first cloud — watch the Gazebo log until the
   ros2 run sonar_3d sonar_aggregator
   ```
 
-- For scene C it is already part of `viz.launch.py` (start that launch only
-  after the beams are up).
+- For scenes C and D it is already part of `viz.launch.py` (start that
+  launch only after the beams are up).
 
 ### Gotcha — clean up before re-launching
 
