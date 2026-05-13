@@ -1,57 +1,108 @@
-# Target manifest for tank_scene.launch.py.
+# Scene + target manifest for tank_scene.launch.py.
 #
-# `top_z_offset` is the distance from the model's origin to the highest point
-# of its mesh in world Z (= what the launch file treats as "top of target").
-# Values computed from the GLB bounding box (mesh frame, after the glTF
-# node's scale + rotation), then taken as the world-frame max-Z relative to
-# the model origin. Re-measure if you change a CAD model.
+# This file is the single source of truth for the float pose, sonar pose,
+# and every target's pose. Edit the numbers here; the world file
+# (tank_with_float.world) only holds the tank, lights, and GUI plugins.
 #
-# `yaw` is the per-target default rotation about Z (rad). Override from the
-# command line with `yaw:=<value>`.
+# All poses are 6-DOF (x, y, z, roll, pitch, yaw) in metres / radians,
+# expressed in the Gazebo world frame.
 #
-# The launch file computes:
-#   z_origin = scene.float_top_z - string_length - top_z_offset
-# so the *top* of the target ends up `string_length` metres below the float's
-# reference plane.
+# CLI overrides on the target (x, y, z, roll, pitch, yaw, target) take
+# precedence over the value here. The sonar and float poses are not
+# overridable from the CLI — change them in this YAML.
 
 scene:
-  float_top_z: 0.85          # m, world Z of the float reference plane
-                             # (= float model origin; must match the float
-                             # pose in tank_with_float.world)
-  default_xy: [0.65, 0.0]    # m, horizontal anchor under the float
-  default_string_length: 0.70  # m, top of target below float_top_z
+  float:
+    x: 0.65
+    y: 0.0
+    z: 0.95
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+
+  sonar_3d:
+    x: -0.95
+    y: 0.0
+    z: 0.5
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
 
 targets:
   brick:
-    top_z_offset: 0.060
-    yaw: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.3
+    roll: 1.5708
+    pitch: 0.0
+    yaw: 1.5708
   circle_metal:
-    top_z_offset: 0.1745
-    yaw: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
+    yaw: 1.5708
   circle_petg:
-    top_z_offset: 0.1446
-    yaw: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
+    yaw: 1.5708
   circle_wood:
-    top_z_offset: 0.1446
-    yaw: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
+    yaw: 1.5708
   metal_board:
-    top_z_offset: 0.1175
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 0.0
   square_metal:
-    top_z_offset: 0.135
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 1.5708
   square_petg:
-    top_z_offset: 0.150
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 1.5708
   square_wood:
-    top_z_offset: 0.1775
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 1.5708
   triangle_metal:
-    top_z_offset: 0.0173
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 0.0
   triangle_petg:
-    top_z_offset: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 0.0
   triangle_wood:
-    top_z_offset: 0.0
+    x: 0.6
+    y: 0.0
+    z: 0.2
+    roll: 0.0
+    pitch: 0.0
     yaw: 0.0

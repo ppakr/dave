@@ -1,14 +1,17 @@
 # Parametric launcher for the tank+float scene.
 #
-# Loads the constant scene (tank, float, sonar, lights) from
-# tank_with_float.world via dave_sensor.launch.py, then spawns one target
-# from ~/blender_models/<target>/ using the per-target metadata in
-# config/targets.yaml.
+# Drives the whole scene from config/targets.yaml:
+#   - scene.float   -> float pose (spawned at launch time)
+#   - scene.sonar_3d -> sonar pose (passed to dave_sensor.launch.py)
+#   - targets.<name> -> target pose (spawned at launch time)
+#
+# The world file (tank_with_float.world) only carries the tank, lights, and
+# GUI plugins; everything pose-related lives in the YAML.
 #
 # Usage:
 #   ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick
 #   ros2 launch sonar_3d_demo tank_scene.launch.py target:=triangle_wood yaw:=0.5
-#   ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal string_length:=0.50
+#   ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal z:=0.25
 
 import os
 
@@ -16,7 +19,11 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, OpaqueFunction
+from launch.actions import (
+    DeclareLaunchArgument,
+    IncludeLaunchDescription,
+    OpaqueFunction,
+)
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -24,24 +31,44 @@ from launch_ros.actions import Node
 
 BLENDER_MODELS_DIR = os.path.expanduser("~/blender_models")
 WORLD_NAME = "tank_with_float"
-
-# Sonar pose in the tank, matching the existing square_metal_demo.launch.py.
-SONAR_POSE = {"x": "-0.95", "y": "0.0", "z": "0.3",
-              "roll": "0.0", "pitch": "0.0", "yaw": "0.0"}
+POSE_KEYS = ("x", "y", "z", "roll", "pitch", "yaw")
 
 
 def _resolve(arg_value, fallback):
-    """Return arg_value if non-empty, else fallback. Both as float."""
+    """Return arg_value if non-empty, else fallback. Both coerced to float."""
     s = str(arg_value).strip()
     return float(s) if s else float(fallback)
 
 
+def _spawn_node(name, sdf_path, pose):
+    """Build a ros_gz_sim create Node for the given model + pose dict."""
+    return Node(
+        package="ros_gz_sim",
+        executable="create",
+        name=f"spawn_{name}",
+        arguments=[
+            "-world", "default",
+            "-name", name,
+            "-file", sdf_path,
+            "-x", f"{pose['x']}",
+            "-y", f"{pose['y']}",
+            "-z", f"{pose['z']}",
+            "-R", f"{pose['roll']}",
+            "-P", f"{pose['pitch']}",
+            "-Y", f"{pose['yaw']}",
+        ],
+        output="both",
+        parameters=[{"use_sim_time": True}],
+    )
+
+
 def launch_setup(context, *args, **kwargs):
     target = LaunchConfiguration("target").perform(context)
-    string_length_arg = LaunchConfiguration("string_length").perform(context)
-    yaw_arg = LaunchConfiguration("yaw").perform(context)
-    x_arg = LaunchConfiguration("x").perform(context)
-    y_arg = LaunchConfiguration("y").perform(context)
+
+    # CLI overrides for the target pose (empty string -> use YAML)
+    pose_overrides = {
+        k: LaunchConfiguration(k).perform(context) for k in POSE_KEYS
+    }
 
     config_path = os.path.join(
         get_package_share_directory("sonar_3d_demo"), "config", "targets.yaml"
@@ -53,30 +80,35 @@ def launch_setup(context, *args, **kwargs):
         raise RuntimeError(
             f"Unknown target '{target}'. Available: {sorted(manifest['targets'])}"
         )
+
     scene = manifest["scene"]
-    spec = manifest["targets"][target]
+    float_pose = scene["float"]
+    sonar_pose = scene["sonar_3d"]
+    target_yaml = manifest["targets"][target]
 
-    string_length = _resolve(string_length_arg, scene["default_string_length"])
-    yaw = _resolve(yaw_arg, spec.get("yaw", 0.0))
-    x = _resolve(x_arg, scene["default_xy"][0])
-    y = _resolve(y_arg, scene["default_xy"][1])
-    z = scene["float_top_z"] - string_length - spec["top_z_offset"]
+    # Resolve target pose: CLI override beats YAML.
+    target_pose = {
+        k: _resolve(pose_overrides[k], target_yaml[k]) for k in POSE_KEYS
+    }
 
-    sdf_path = os.path.join(BLENDER_MODELS_DIR, target, "model.sdf")
-    if not os.path.isfile(sdf_path):
-        raise RuntimeError(f"Target SDF not found: {sdf_path}")
+    float_sdf = os.path.join(BLENDER_MODELS_DIR, "float", "model.sdf")
+    target_sdf = os.path.join(BLENDER_MODELS_DIR, target, "model.sdf")
+    for path in (float_sdf, target_sdf):
+        if not os.path.isfile(path):
+            raise RuntimeError(f"SDF not found: {path}")
 
     print(
-        f"[tank_scene] target={target} pose=({x:.3f}, {y:.3f}, {z:.3f}) yaw={yaw:.4f} "
-        f"(float_top_z={scene['float_top_z']}, string={string_length:.3f}, "
-        f"top_z_offset={spec['top_z_offset']})"
+        f"[tank_scene] target={target} "
+        f"pose=({target_pose['x']:.3f}, {target_pose['y']:.3f}, {target_pose['z']:.3f}) "
+        f"rpy=({target_pose['roll']:.4f}, {target_pose['pitch']:.4f}, {target_pose['yaw']:.4f})"
     )
 
     tank_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory("dave_demos"), "launch",
-                "dave_sensor.launch.py"
+                get_package_share_directory("dave_demos"),
+                "launch",
+                "dave_sensor.launch.py",
             )
         ),
         launch_arguments={
@@ -85,53 +117,40 @@ def launch_setup(context, *args, **kwargs):
             "paused": LaunchConfiguration("paused"),
             "debug": LaunchConfiguration("debug"),
             "verbosity_level": LaunchConfiguration("verbosity_level"),
-            **SONAR_POSE,
+            "x": str(sonar_pose["x"]),
+            "y": str(sonar_pose["y"]),
+            "z": str(sonar_pose["z"]),
+            "roll": str(sonar_pose["roll"]),
+            "pitch": str(sonar_pose["pitch"]),
+            "yaw": str(sonar_pose["yaw"]),
         }.items(),
     )
 
-    target_spawner = Node(
-        package="ros_gz_sim",
-        executable="create",
-        arguments=[
-            "-world", "default",
-            "-name", target,
-            "-file", sdf_path,
-            "-x", f"{x}",
-            "-y", f"{y}",
-            "-z", f"{z}",
-            "-Y", f"{yaw}",
-        ],
-        output="both",
-        parameters=[{"use_sim_time": True}],
-    )
+    float_spawner = _spawn_node("float", float_sdf, float_pose)
+    target_spawner = _spawn_node(target, target_sdf, target_pose)
 
-    return [tank_sim, target_spawner]
+    return [tank_sim, float_spawner, target_spawner]
 
 
 def generate_launch_description():
-    return LaunchDescription([
+    args = [
         DeclareLaunchArgument(
             "target",
             description="Target model folder name in ~/blender_models (e.g. brick, square_metal)",
         ),
-        DeclareLaunchArgument(
-            "string_length", default_value="",
-            description="m, top of target below float top. Empty = YAML default.",
-        ),
-        DeclareLaunchArgument(
-            "yaw", default_value="",
-            description="rad, override target yaw. Empty = per-target YAML default.",
-        ),
-        DeclareLaunchArgument(
-            "x", default_value="",
-            description="m, override target x. Empty = scene.default_xy[0].",
-        ),
-        DeclareLaunchArgument(
-            "y", default_value="",
-            description="m, override target y. Empty = scene.default_xy[1].",
-        ),
+    ]
+    # CLI pose overrides for the target. Empty string -> use YAML value.
+    for k in POSE_KEYS:
+        args.append(
+            DeclareLaunchArgument(
+                k,
+                default_value="",
+                description=f"Override target {k} (m or rad). Empty = YAML value.",
+            )
+        )
+    args += [
         DeclareLaunchArgument("paused", default_value="false"),
         DeclareLaunchArgument("debug", default_value="true"),
         DeclareLaunchArgument("verbosity_level", default_value="4"),
-        OpaqueFunction(function=launch_setup),
-    ])
+    ]
+    return LaunchDescription(args + [OpaqueFunction(function=launch_setup)])
