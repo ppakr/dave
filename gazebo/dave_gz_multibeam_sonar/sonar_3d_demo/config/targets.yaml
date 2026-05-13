@@ -37,72 +37,72 @@ targets:
     pitch: 0.0
     yaw: 1.5708
   circle_metal:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.24
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   circle_petg:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.26
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   circle_wood:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.26
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   metal_board:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.285
     roll: 0.0
     pitch: 0.0
-    yaw: 0.0
+    yaw: 1.5708
   square_metal:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.27
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   square_petg:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.26
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   square_wood:
-    x: 0.6
+    x: 0.65
     y: 0.0
-    z: 0.2
+    z: 0.23
     roll: 0.0
     pitch: 0.0
     yaw: 1.5708
   triangle_metal:
-    x: 0.6
-    y: 0.0
-    z: 0.2
-    roll: 0.0
+    x: 0.61
+    y: -0.15
+    z: 0.15
+    roll: 3.14159
     pitch: 0.0
-    yaw: 0.0
+    yaw: 1.5708
   triangle_petg:
     x: 0.6
     y: 0.0
-    z: 0.2
-    roll: 0.0
+    z: 0.17
+    roll: 3.14159
     pitch: 0.0
-    yaw: 0.0
+    yaw: 1.5708
   triangle_wood:
     x: 0.6
     y: 0.0
-    z: 0.2
-    roll: 0.0
+    z: 0.1
+    roll: 3.14159
     pitch: 0.0
-    yaw: 0.0
+    yaw: 1.5708
