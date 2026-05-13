@@ -38,7 +38,7 @@
         </gz-gui>
         <engine>ogre2</engine>
         <scene>scene</scene>
-        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <ambient_light>0.6 0.6 0.6</ambient_light>
         <background_color>0.2 0.5 0.8</background_color>
         <camera_pose>3 3 3 0 0.6 -2.4</camera_pose>
       </plugin>
@@ -130,6 +130,36 @@
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
     </include>
 
+    <!-- Lighting for visual inspection. Has no effect on the sonar render
+         (depth-only ray cast). Two point lights above the water surface
+         shining down into the tank; tank walls would otherwise occlude
+         the Sun's directional light from outside. -->
+    <light name="target_light" type="point">
+      <pose>0.65 0 1.8 0 0 0</pose>
+      <diffuse>1.0 1.0 1.0 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>5</range>
+        <constant>0.4</constant>
+        <linear>0.1</linear>
+        <quadratic>0.01</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <light name="fill_light" type="point">
+      <pose>-0.5 0 1.8 0 0 0</pose>
+      <diffuse>0.8 0.8 0.9 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>6</range>
+        <constant>0.5</constant>
+        <linear>0.05</linear>
+        <quadratic>0.005</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
     <!-- WaterLinked wetlab tank (local model, water surface built in) -->
     <include>
       <uri>model://WL_wetlab_tank</uri>
@@ -138,14 +168,26 @@
       <static>true</static>
     </include>
 
+    <!-- Float: sits at the water surface with its model origin (= ArUco /
+         body top reference plane) at z = 1.0. Same (x, y) as the target
+         below; target hangs straight down from this point. -->
+    <include>
+      <uri>model://float</uri>
+      <name>float</name>
+      <pose>0.65 0 0.85 0 0 0</pose>
+      <static>true</static>
+    </include>
+
     <!-- Square metal target: 1.5 m straight ahead of the 3D sonar
-         (sonar at x=-0.85, yaw=0 -> bore axis +X), 0.75 m below the
-         tank water surface (z=1.0) -> z=0.25, yawed 90 deg about Z
-         (pi/2 = 1.5708 rad). -->
+         (sonar at x=-0.85, yaw=0 -> bore axis +X), hanging from the float
+         such that the *top* of the target is 70 cm below the top of the
+         float (= float model origin at z=1.0): top of target at z = 0.30.
+         Mesh is 0.02 m thick with origin at its bottom face, so model
+         origin sits at z = 0.30 - 0.02 = 0.28. Yawed 90 deg about Z. -->
     <include>
       <uri>model://square_metal</uri>
       <name>square_metal</name>
-      <pose>0.65 0 0.25 0 0 1.5708</pose>
+      <pose>0.65 0 0.18 0 0 1.5708</pose>
       <static>true</static>
     </include>
 
