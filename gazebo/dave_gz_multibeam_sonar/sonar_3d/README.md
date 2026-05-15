@@ -66,23 +66,26 @@ ros2 launch sonar_3d_demo viz.launch.py
 `rviz:=false` to skip RViz, `rviz_config:=/path/to/foo.rviz` to use a
 different layout (defaults to `sonar_3d_demo/rviz/square_metal_demo.rviz`).
 
-### Option D — parametric tank+float scene with selectable target
+### Option D — parametric tank+float scene with selectable target and sensor
 
-A variant of scene C built for swapping between the full target library
-without editing the world file. The scene (tank, float, sonar, lights) is
-held constant in `tank_with_float.world`; the target is spawned at launch
-time from `~/blender_models/<target>/` using the per-target metadata in
-`sonar_3d_demo/config/targets.yaml`. Like scene C, this is **sim only** —
-RViz and the aggregator come from `viz.launch.py`.
+A variant of scene C built for swapping between the full target library and
+between sonar / lidar sensors without editing the world. The world
+(`tank_with_float.world`) only holds the tank, lights, and GUI plugins.
+Float, sensor, and target are spawned at launch time from
+`sonar_3d_demo/config/targets.yaml` — that YAML is the single source of
+truth for every pose in the scene. Like scene C, this is **sim only** —
+RViz comes from `viz.launch.py`.
 
 ```bash
-# terminal 1 — sim, target selectable
+# terminal 1 — sim, sensor + target selectable
 ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal
 ros2 launch sonar_3d_demo tank_scene.launch.py target:=triangle_wood
-ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick string_length:=0.50
+ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick z:=0.25
+ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal sensor:=lidar
 
-# terminal 2 — once the beams have initialized
-ros2 launch sonar_3d_demo viz.launch.py
+# terminal 2 — once the sensors have initialized
+ros2 launch sonar_3d_demo viz.launch.py                  # sonar (default)
+ros2 launch sonar_3d_demo viz.launch.py sensor:=lidar    # lidar
 ```
 
 Available targets (folder names under `~/blender_models/`, also keys in
@@ -90,29 +93,67 @@ Available targets (folder names under `~/blender_models/`, also keys in
 `circle_wood`, `metal_board`, `square_metal`, `square_petg`, `square_wood`,
 `triangle_metal`, `triangle_petg`, `triangle_wood`.
 
-Launch arguments:
+#### YAML structure
+
+```yaml
+scene:
+  float:    {x: ..., y: ..., z: ..., roll: ..., pitch: ..., yaw: ...}
+  sonar_3d: {x: ..., y: ..., z: ..., roll: ..., pitch: ..., yaw: ...}
+  lidar_3d: {x: ..., y: ..., z: ..., roll: ..., pitch: ..., yaw: ...}
+
+targets:
+  <model_name>:
+    x: ...   y: ...   z: ...
+    roll: ...   pitch: ...   yaw: ...
+```
+
+All poses are 6-DOF (m / rad) in the Gazebo world frame. The launch reads
+`scene.float` for the float spawn, `scene.sonar_3d` or `scene.lidar_3d`
+(depending on `sensor`) for the sensor spawn, and `targets.<name>` for the
+target spawn.
+
+#### Launch arguments
+
+`tank_scene.launch.py`:
 
 | Arg | Default | Meaning |
 |---|---|---|
 | `target` | *(required)* | Folder name under `~/blender_models/` |
-| `string_length` | YAML `scene.default_string_length` (`0.70 m`) | Distance from float-top to target-top |
-| `yaw` | YAML `targets.<target>.yaw` | Rotation about Z, rad |
-| `x`, `y` | YAML `scene.default_xy` (`(0.65, 0.0)`) | Horizontal anchor under the float |
+| `sensor` | `sonar` | Mounted sensor: `sonar` (WaterLinked 3D) or `lidar` (3D LiDAR) |
+| `x`, `y`, `z`, `roll`, `pitch`, `yaw` | *empty → YAML value* | CLI overrides for the **target** pose (not the sensor) |
 | `paused` | `false` | Start the sim paused |
 | `debug`, `verbosity_level` | `true`, `4` | Forwarded to `dave_sensor.launch.py` |
 
-Placement formula (computed in the launch file):
+`viz.launch.py`:
 
-```
-target_z_origin = scene.float_top_z - string_length - target.top_z_offset
-```
+| Arg | Default | Meaning |
+|---|---|---|
+| `sensor` | `sonar` | Picks the RViz config and toggles the sonar aggregator |
+| `rviz` | `true` | Open RViz |
+| `rviz_config` | *empty → sensor default* | Override the RViz `.rviz` path |
 
-where `top_z_offset` is the height of the target's top above its model
-origin (measured from the GLB bounding box; pre-computed in the YAML and
-**must be re-measured if you re-export a CAD model**). The `float_top_z`
-constant in the YAML must stay in sync with the float pose in
-`tank_with_float.world` — if you move the float in the world, update the
-YAML.
+Sensor-specific viz behaviour:
+
+- `sensor:=sonar` — loads `rviz/square_metal_demo.rviz` and starts
+  `sonar_aggregator` (which fuses the 64 multibeam clouds into
+  `/sensor/sonar_3d/pointcloud`).
+- `sensor:=lidar` — loads `rviz/square_metal_demo_lidar.rviz` (fixed frame
+  `world`, point cloud on `/lidar_3d/lidar/points`); aggregator is skipped.
+  In this mode `tank_scene.launch.py` also runs a `ros_gz_bridge` for the
+  lidar topics and a `static_transform_publisher` pinning
+  `lidar_3d/lidar_3d_base_link/gpu_lidar` to the YAML lidar pose.
+
+#### Editing the scene
+
+- **Move the float / sonar / lidar:** edit `scene.float`, `scene.sonar_3d`,
+  or `scene.lidar_3d` in `config/targets.yaml` and relaunch.
+- **Move a target permanently:** edit `targets.<name>` in the same file.
+- **Move a target for one run:** pass any of `x:=`, `y:=`, `z:=`, `roll:=`,
+  `pitch:=`, `yaw:=` on the command line — those override the YAML value
+  for that target only.
+- **Add a new target model:** drop a `model.sdf` (+ `meshes/`) into
+  `~/blender_models/<new_name>/`, then add a `<new_name>:` block under
+  `targets:` in the YAML. No code changes required.
 
 ### Starting the aggregator
 
@@ -129,7 +170,9 @@ missing from the first cloud — watch the Gazebo log until the
   ```
 
 - For scenes C and D it is already part of `viz.launch.py` (start that
-  launch only after the beams are up).
+  launch only after the beams are up). In scene D, `sensor:=lidar` skips
+  the aggregator entirely — the lidar publishes its own point cloud
+  directly on `/lidar_3d/lidar/points`.
 
 ### Gotcha — clean up before re-launching
 

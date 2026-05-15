@@ -1,8 +1,9 @@
 # Parametric launcher for the tank+float scene.
 #
 # Drives the whole scene from config/targets.yaml:
-#   - scene.float   -> float pose (spawned at launch time)
-#   - scene.sonar_3d -> sonar pose (passed to dave_sensor.launch.py)
+#   - scene.float    -> float pose (spawned at launch time)
+#   - scene.sonar_3d -> sonar pose  (when sensor:=sonar)
+#   - scene.lidar_3d -> lidar pose  (when sensor:=lidar)
 #   - targets.<name> -> target pose (spawned at launch time)
 #
 # The world file (tank_with_float.world) only carries the tank, lights, and
@@ -10,7 +11,7 @@
 #
 # Usage:
 #   ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick
-#   ros2 launch sonar_3d_demo tank_scene.launch.py target:=triangle_wood yaw:=0.5
+#   ros2 launch sonar_3d_demo tank_scene.launch.py target:=brick sensor:=lidar
 #   ros2 launch sonar_3d_demo tank_scene.launch.py target:=square_metal z:=0.25
 
 import os
@@ -32,6 +33,15 @@ from launch_ros.actions import Node
 BLENDER_MODELS_DIR = os.path.expanduser("~/blender_models")
 WORLD_NAME = "tank_with_float"
 POSE_KEYS = ("x", "y", "z", "roll", "pitch", "yaw")
+
+# Map the user-facing `sensor` arg to (namespace, YAML key).
+# The namespace is what dave_sensor.launch.py uses to look up the model
+# under dave_sensor_models/description/<namespace>/model.sdf, and what gets
+# prefixed onto Gazebo's published frames.
+SENSOR_PROFILES = {
+    "sonar": {"namespace": "3d_sonar", "yaml_key": "sonar_3d"},
+    "lidar": {"namespace": "lidar_3d", "yaml_key": "lidar_3d"},
+}
 
 
 def _resolve(arg_value, fallback):
@@ -62,10 +72,53 @@ def _spawn_node(name, sdf_path, pose):
     )
 
 
+def _lidar_nodes(pose):
+    """Bridge + static TF for the 3D lidar.
+
+    Mirrors lidar_3d_demo.launch.py, but pins the static TF to the YAML
+    lidar pose so RViz sees the lidar where it actually is in the tank.
+    """
+    bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
+            "/lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+        ],
+        remappings=[
+            ("/lidar", "/lidar_3d/lidar"),
+            ("/lidar/points", "/lidar_3d/lidar/points"),
+        ],
+        output="screen",
+    )
+    tf = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=[
+            "--x", f"{pose['x']}",
+            "--y", f"{pose['y']}",
+            "--z", f"{pose['z']}",
+            "--roll", f"{pose['roll']}",
+            "--pitch", f"{pose['pitch']}",
+            "--yaw", f"{pose['yaw']}",
+            "--frame-id", "world",
+            "--child-frame-id", "lidar_3d/lidar_3d_base_link/gpu_lidar",
+        ],
+    )
+    return [bridge, tf]
+
+
 def launch_setup(context, *args, **kwargs):
     target = LaunchConfiguration("target").perform(context)
+    sensor = LaunchConfiguration("sensor").perform(context)
 
-    # CLI overrides for the target pose (empty string -> use YAML)
+    if sensor not in SENSOR_PROFILES:
+        raise RuntimeError(
+            f"Unknown sensor '{sensor}'. Options: {sorted(SENSOR_PROFILES)}"
+        )
+    profile = SENSOR_PROFILES[sensor]
+
     pose_overrides = {
         k: LaunchConfiguration(k).perform(context) for k in POSE_KEYS
     }
@@ -82,11 +135,15 @@ def launch_setup(context, *args, **kwargs):
         )
 
     scene = manifest["scene"]
+    if profile["yaml_key"] not in scene:
+        raise RuntimeError(
+            f"Missing 'scene.{profile['yaml_key']}' in targets.yaml "
+            f"(needed for sensor:={sensor})"
+        )
+    sensor_pose = scene[profile["yaml_key"]]
     float_pose = scene["float"]
-    sonar_pose = scene["sonar_3d"]
     target_yaml = manifest["targets"][target]
 
-    # Resolve target pose: CLI override beats YAML.
     target_pose = {
         k: _resolve(pose_overrides[k], target_yaml[k]) for k in POSE_KEYS
     }
@@ -98,7 +155,8 @@ def launch_setup(context, *args, **kwargs):
             raise RuntimeError(f"SDF not found: {path}")
 
     print(
-        f"[tank_scene] target={target} "
+        f"[tank_scene] sensor={sensor} (namespace={profile['namespace']}) "
+        f"target={target} "
         f"pose=({target_pose['x']:.3f}, {target_pose['y']:.3f}, {target_pose['z']:.3f}) "
         f"rpy=({target_pose['roll']:.4f}, {target_pose['pitch']:.4f}, {target_pose['yaw']:.4f})"
     )
@@ -112,24 +170,27 @@ def launch_setup(context, *args, **kwargs):
             )
         ),
         launch_arguments={
-            "namespace": "3d_sonar",
+            "namespace": profile["namespace"],
             "world_name": WORLD_NAME,
             "paused": LaunchConfiguration("paused"),
             "debug": LaunchConfiguration("debug"),
             "verbosity_level": LaunchConfiguration("verbosity_level"),
-            "x": str(sonar_pose["x"]),
-            "y": str(sonar_pose["y"]),
-            "z": str(sonar_pose["z"]),
-            "roll": str(sonar_pose["roll"]),
-            "pitch": str(sonar_pose["pitch"]),
-            "yaw": str(sonar_pose["yaw"]),
+            "x": str(sensor_pose["x"]),
+            "y": str(sensor_pose["y"]),
+            "z": str(sensor_pose["z"]),
+            "roll": str(sensor_pose["roll"]),
+            "pitch": str(sensor_pose["pitch"]),
+            "yaw": str(sensor_pose["yaw"]),
         }.items(),
     )
 
     float_spawner = _spawn_node("float", float_sdf, float_pose)
     target_spawner = _spawn_node(target, target_sdf, target_pose)
 
-    return [tank_sim, float_spawner, target_spawner]
+    nodes = [tank_sim, float_spawner, target_spawner]
+    if sensor == "lidar":
+        nodes += _lidar_nodes(sensor_pose)
+    return nodes
 
 
 def generate_launch_description():
@@ -138,8 +199,12 @@ def generate_launch_description():
             "target",
             description="Target model folder name in ~/blender_models (e.g. brick, square_metal)",
         ),
+        DeclareLaunchArgument(
+            "sensor",
+            default_value="sonar",
+            description="Which sensor to mount: 'sonar' (WaterLinked 3D sonar) or 'lidar' (3D LiDAR)",
+        ),
     ]
-    # CLI pose overrides for the target. Empty string -> use YAML value.
     for k in POSE_KEYS:
         args.append(
             DeclareLaunchArgument(

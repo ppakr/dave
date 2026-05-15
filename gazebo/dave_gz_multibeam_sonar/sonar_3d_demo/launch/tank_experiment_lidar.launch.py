@@ -47,7 +47,7 @@ def generate_launch_description():
             "paused": "false",
             "x": "-0.85",
             "y": "0.0",
-            "z": "0.3",
+            "z": "0.5",
             "roll": "0.0",
             "pitch": "0.0",
             "yaw": "0.0",
@@ -101,7 +101,9 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument("rviz", default_value="true", description="Open RViz."),
+            DeclareLaunchArgument(
+                "rviz", default_value="true", description="Open RViz."
+            ),
             tank_sim,
             bridge,
             tf_lidar,
