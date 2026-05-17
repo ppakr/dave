@@ -11,13 +11,19 @@ import math
 sonar_3d_vertical_resolution = 64
 sonar_3d_vertical_fov_deg = 40.0
 sonar_3d_vertical_seperation_deg = 0.60
-sonar_3d_vertical_angular_resolution = 1.6 # deg
-sonar_3d_vertical_start_rad = math.radians(-20.0 + 1.10) # first sensor is -20 + 0.8 + 0.3 because we need to get the center point
+sonar_3d_vertical_angular_resolution = 1.6  # deg
+sonar_3d_vertical_start_rad = math.radians(
+    -20.0 + 1.10
+)  # first sensor is -20 + 0.8 + 0.3 because we need to get the center point
 sonar_3d_vertical_end_rad = math.radians(20.0 - 1.10)
 
-multibeam_vertical_min_angle_rad = math.radians(-sonar_3d_vertical_angular_resolution / 2.0)
-multibeam_vertical_max_angle_rad = math.radians(sonar_3d_vertical_angular_resolution / 2.0)
-multibeam_vertical_num_sensors = sonar_3d_vertical_resolution # 64 sensors
+multibeam_vertical_min_angle_rad = math.radians(
+    -sonar_3d_vertical_angular_resolution / 2.0
+)
+multibeam_vertical_max_angle_rad = math.radians(
+    sonar_3d_vertical_angular_resolution / 2.0
+)
+multibeam_vertical_num_sensors = sonar_3d_vertical_resolution  # 64 sensors
 multibeam_vertical_fov_deg = sonar_3d_vertical_angular_resolution
 
 # ------------- horizontal ------------------------
@@ -25,12 +31,12 @@ sonar_3d_horizontal_resolution = 256
 sonar_3d_horizontal_fov_deg = 90.0
 sonar_3d_horizontal_seperation_deg = 0.35
 sonar_3d_horizontal_angular_resolution = 0.85
-sonar_3d_horizontal_start_rad = math.radians(-44.975) # from 128 * 0.35 + 0.175
+sonar_3d_horizontal_start_rad = math.radians(-44.975)  # from 128 * 0.35 + 0.175
 sonar_3d_horizontal_end_rad = math.radians(44.975)
 
 multibeam_horizontal_min_angle_rad = sonar_3d_horizontal_start_rad
 multibeam_horizontal_max_angle_rad = sonar_3d_horizontal_end_rad
-multibeam_horizontal_num_beams = sonar_3d_horizontal_resolution # 256 beams
+multibeam_horizontal_num_beams = sonar_3d_horizontal_resolution  # 256 beams
 
 
 out_dir = "/home/aki/auv_ws/src/dave/models/dave_sensor_models/3d_sonar"
@@ -71,42 +77,23 @@ sdf_content = """<?xml version="1.0" ?>
           <izz>0.0151357</izz>
         </inertia>
       </inertial>
-      <visual name="wl_sonar_3d_body3_visual">
-        <pose>0 0 0 3.141592653589793 0 0</pose>
+      <visual name="blueview_p900_base_link_visual">
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>0.01 0.01 0.01</scale>
-            <uri>model://meshes/wl_sonar_3d/body3_visual.obj</uri>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/blueview_p900/p900.dae</uri>
           </mesh>
         </geometry>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
-      <visual name="wl_sonar_3d_body4_visual">
-        <pose>0 0 0 3.141592653589793 0 0</pose>
+      <collision name="blueview_p900_base_link_collision">
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>0.01 0.01 0.01</scale>
-            <uri>model://meshes/wl_sonar_3d/body4_visual.obj</uri>
+            <uri>model://meshes/blueview_p900/COLLISION-p900.dae</uri>
           </mesh>
-        </geometry>
-        <transparency>0</transparency>
-        <cast_shadows>1</cast_shadows>
-      </visual>
-      <collision name="wl_sonar_3d_body3_collision">
-        <pose>0.024503619305017786 0.0 0.0 3.141592653589793 1.5707963267948966 0</pose>
-        <geometry>
-          <box>
-            <size>0.07995 0.12195 0.023007238610035577</size>
-          </box>
-        </geometry>
-      </collision>
-      <collision name="wl_sonar_3d_body4_collision">
-        <pose>-0.014513909746511683 -0.001782765812776349 -1.0989202708591333e-09 -3.068957276201641 1.57079628737013 0</pose>
-        <geometry>
-          <box>
-            <size>0.0799999976568633 0.12269241652215174 0.09751448382404103</size>
-          </box>
         </geometry>
       </collision>
 """
@@ -115,7 +102,9 @@ sdf_content = """<?xml version="1.0" ?>
 for i in range(multibeam_vertical_num_sensors):
     # center around 0
     # start at sonar_3d_vertical_start_rad and step with sonar_3d_vertical_seperation_deg
-    pitch_rad = sonar_3d_vertical_start_rad + i * math.radians(sonar_3d_vertical_seperation_deg)
+    pitch_rad = sonar_3d_vertical_start_rad + i * math.radians(
+        sonar_3d_vertical_seperation_deg
+    )
     print(f"Generating sensor {i} with pitch {math.degrees(pitch_rad):.6f}")
     sensor_xml = f"""
       <sensor name="sonar_3d_{i}" type="custom" gz:type="multibeam_sonar">
@@ -133,7 +122,7 @@ for i in range(multibeam_vertical_num_sensors):
               <max_angle>{multibeam_horizontal_max_angle_rad:.6f}</max_angle>
             </horizontal>
             <vertical>
-              <rays>10</rays>
+              <rays>2</rays>
               <min_angle>{pitch_rad + multibeam_vertical_min_angle_rad:.6f}</min_angle>
               <max_angle>{pitch_rad + multibeam_vertical_max_angle_rad:.6f}</max_angle>
             </vertical>
@@ -149,7 +138,7 @@ for i in range(multibeam_vertical_num_sensors):
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
-            <maxDistance>10</maxDistance>
+            <maxDistance>10.0</maxDistance>
             <raySkips>1</raySkips>
             <sensorGain>0.02</sensorGain>
             <blazingSonarImage>true</blazingSonarImage>
@@ -176,4 +165,3 @@ with open(model_sdf_path, "w") as f:
     f.write(sdf_content)
 
 print(f"Generated {multibeam_vertical_num_sensors} sonar sensors in {model_sdf_path}")
-
