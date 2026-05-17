@@ -36,7 +36,6 @@ from launch.actions import (
     IncludeLaunchDescription,
     OpaqueFunction,
 )
-from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
@@ -45,16 +44,13 @@ from launch_ros.actions import Node
 WORLD_NAME = "tank_experiment"
 
 # Per-sensor configuration:
-#   namespace   - dave_sensor_models/description/<namespace>/model.sdf
-#   rviz_config - filename under sonar_3d_demo/rviz/
+#   namespace - dave_sensor_models/description/<namespace>/model.sdf
 SENSOR_PROFILES = {
     "sonar": {
         "namespace": "3d_sonar",
-        "rviz_config": "tank_experiment.rviz",
     },
     "lidar": {
         "namespace": "lidar_3d",
-        "rviz_config": "tank_experiment_lidar.rviz",
     },
 }
 
@@ -104,7 +100,6 @@ def launch_setup(context, *args, **kwargs):
             f"Unknown sensor '{sensor}'. Options: {sorted(SENSOR_PROFILES)}"
         )
     profile = SENSOR_PROFILES[sensor]
-    pkg_sonar_3d_demo = get_package_share_directory("sonar_3d_demo")
     pkg_dave_demos = get_package_share_directory("dave_demos")
 
     tank_sim = IncludeLaunchDescription(
@@ -126,18 +121,7 @@ def launch_setup(context, *args, **kwargs):
         }.items(),
     )
 
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
-        arguments=[
-            "-d",
-            os.path.join(pkg_sonar_3d_demo, "rviz", profile["rviz_config"]),
-        ],
-        condition=IfCondition(LaunchConfiguration("rviz")),
-        output="screen",
-    )
-
-    nodes = [tank_sim, rviz]
+    nodes = [tank_sim]
     if sensor == "lidar":
         nodes += _lidar_nodes()
 
@@ -152,9 +136,6 @@ def generate_launch_description():
                 "sensor",
                 default_value="sonar",
                 description="Mounted sensor: 'sonar' (WaterLinked 3D) or 'lidar' (3D LiDAR)",
-            ),
-            DeclareLaunchArgument(
-                "rviz", default_value="true", description="Open RViz."
             ),
             # Sensor pose in the tank. Same default for both sensors so the
             # two scenes are directly comparable.
