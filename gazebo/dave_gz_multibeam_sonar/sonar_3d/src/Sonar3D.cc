@@ -253,7 +253,7 @@ private:
     // Find the range index of maximum intensity for each beam (column).
     std::vector<uint32_t> max_indices(beam_count, 0);
     std::vector<float> max_values(beam_count, 0.0f);
-    float threshold{60.0f};
+    float threshold{85.0f};
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       double max_val = -1.0;
@@ -268,8 +268,7 @@ private:
           max_idx = range;
         }
       }
-      // std::cout << "Sonar " << sonar_idx << ", Beam " << beam << ": max intensity at range index
-      // "
+      // std::cout << "Sonar " << sonar_idx << ", Beam " << beam << ": max intensity at range index"
       //           << max_idx << " with value " << max_val << std::endl;
       max_indices[beam] = max_idx;
       max_values[beam] = static_cast<float>(max_val);
