@@ -38,13 +38,22 @@ separately (see below).
 
 The validation scene that mirrors the real-tank recording setup
 (`tank_experiment.world`, with the `WL_wetlab_tank` model fetched from
-Gazebo Fuel on first launch):
+Gazebo Fuel on first launch). Like scenes C and D, this is **sim only** —
+RViz and the aggregator come from `viz.launch.py`:
 
 ```bash
+# terminal 1 — sim (sonar by default, sensor:=lidar for lidar)
 ros2 launch sonar_3d_demo tank_experiment.launch.py
-```
+ros2 launch sonar_3d_demo tank_experiment.launch.py sensor:=lidar
 
-This launch also opens RViz itself; `rviz:=false` skips it.
+# terminal 2 — once the sensors have initialized; use the tank-specific
+# RViz layouts via rviz_config (viz.launch.py defaults to the
+# square_metal layouts otherwise)
+ros2 launch sonar_3d_demo viz.launch.py \
+    rviz_config:=$(ros2 pkg prefix sonar_3d_demo)/share/sonar_3d_demo/rviz/tank_experiment.rviz
+ros2 launch sonar_3d_demo viz.launch.py sensor:=lidar \
+    rviz_config:=$(ros2 pkg prefix sonar_3d_demo)/share/sonar_3d_demo/rviz/tank_experiment_lidar.rviz
+```
 
 ### Option C — square metal target in the wetlab tank
 
@@ -163,16 +172,16 @@ missing from the first cloud — watch the Gazebo log until the
 `Initializing [3d_sonar::base_link::sonar_3d_<i>] sensor` lines stop
 (~20–30 s), or check `ros2 topic hz` on a high-numbered beam.
 
-- For scenes A and B, run it directly:
+- For scene A, run it directly:
 
   ```bash
   ros2 run sonar_3d sonar_aggregator
   ```
 
-- For scenes C and D it is already part of `viz.launch.py` (start that
-  launch only after the beams are up). In scene D, `sensor:=lidar` skips
-  the aggregator entirely — the lidar publishes its own point cloud
-  directly on `/lidar_3d/lidar/points`.
+- For scenes B, C, and D it is already part of `viz.launch.py` (start
+  that launch only after the beams are up). In scenes B and D,
+  `sensor:=lidar` skips the aggregator entirely — the lidar publishes
+  its own point cloud directly on `/lidar_3d/lidar/points`.
 
 ### Gotcha — clean up before re-launching
 
