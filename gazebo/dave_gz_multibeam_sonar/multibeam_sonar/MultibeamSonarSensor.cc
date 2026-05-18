@@ -699,7 +699,7 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   }
   this->beamCorrectorSum = 0.0;
 
-  this->constMu = true;
+  this->constMu = false;
   this->mu = 1e-3;
 
   return true;
@@ -926,6 +926,7 @@ void MultibeamSonarSensor::Implementation::FillPointCloudMsg(const float * _rayB
   // After filling pointMsg, compute pointCloudImage as well
   this->lock_.lock();
   this->pointCloudImage.create(height, width, CV_32FC1);
+  this->retroImage.create(height, width, CV_32FC1);
   cv::MatIterator_<float> iter_image = this->pointCloudImage.begin<float>();
 
   bool angles_calculation_flag = false;
@@ -955,9 +956,11 @@ void MultibeamSonarSensor::Implementation::FillPointCloudMsg(const float * _rayB
       // Index in _rayBuffer
       auto index = j * width * channels + i * channels;
       float depth = _rayBuffer[index];
+      float retro = _rayBuffer[index + 1];
 
       float range = std::isfinite(depth) ? depth : 100000.0f;
       *iter_image = range;
+      this->retroImage.at<float>(j, i) = std::isfinite(retro) ? retro : 0.0f;
 
       // Store azimuth angles on the first row only
       if (angles_calculation_flag && j == 0)
@@ -1066,10 +1069,16 @@ void MultibeamSonarSensor::Implementation::ComputeSonarImage()
     ComputeCorrector();
   }
 
-  if (this->reflectivityImage.rows == 0)
+  // reflectivityImage is indexed (row=ray, col=beam) by the CUDA kernel —
+  // i.e. (height, width), matching pointCloudImage.
+  if (this->constMu || this->retroImage.rows == 0)
   {
     this->reflectivityImage =
-      cv::Mat(this->pointMsg.width(), this->pointMsg.height(), CV_32FC1, cv::Scalar(this->mu));
+      cv::Mat(this->pointMsg.height(), this->pointMsg.width(), CV_32FC1, cv::Scalar(this->mu));
+  }
+  else
+  {
+    cv::max(this->retroImage, this->mu, this->reflectivityImage);
   }
 
   auto start = std::chrono::high_resolution_clock::now();
