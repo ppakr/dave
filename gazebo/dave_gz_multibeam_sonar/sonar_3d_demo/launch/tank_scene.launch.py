@@ -193,7 +193,7 @@ def launch_setup(context, *args, **kwargs):
             f"(needed for sensor:={sensor})"
         )
     sensor_pose = scene[profile["yaml_key"]]
-    float_pose = scene["float"]
+    float_pose = dict(scene["float"])  # mutable copy — x/y are overridden below
     target_yaml = manifest["targets"][target]
 
     # YAML baseline pose (rotations always come from here — see module docstring).
@@ -228,14 +228,31 @@ def launch_setup(context, *args, **kwargs):
         if not os.path.isfile(path):
             raise RuntimeError(f"SDF not found: {path}")
 
+    # Float x/y resolution, in order of precedence:
+    #   1. CLI float_x:= / float_y:=  (non-empty wins)
+    #   2. Per-target `float_x` / `float_y` keys in targets.yaml
+    #   3. Default to the target's own x / y (center-aligned on the Z axis)
+    cli_fx = LaunchConfiguration("float_x").perform(context).strip()
+    cli_fy = LaunchConfiguration("float_y").perform(context).strip()
+    yaml_fx = target_yaml.get("float_x")
+    yaml_fy = target_yaml.get("float_y")
+    float_pose["x"] = float(cli_fx) if cli_fx else (
+        float(yaml_fx) if yaml_fx is not None else target_pose["x"]
+    )
+    float_pose["y"] = float(cli_fy) if cli_fy else (
+        float(yaml_fy) if yaml_fy is not None else target_pose["y"]
+    )
+
     print(
         f"[tank_scene] sensor={sensor} (namespace={profile['namespace']}) "
         f"target={target} pose_source={pose_source}"
         f"{' (CSV)' if real_xyz_used else ' (YAML)'}\n"
-        f"            pose=({target_pose['x']:.3f}, {target_pose['y']:.3f}, "
+        f"            target=({target_pose['x']:.3f}, {target_pose['y']:.3f}, "
         f"{target_pose['z']:.3f}) "
         f"rpy=({target_pose['roll']:.4f}, {target_pose['pitch']:.4f}, "
-        f"{target_pose['yaw']:.4f})"
+        f"{target_pose['yaw']:.4f})\n"
+        f"            float =({float_pose['x']:.3f}, {float_pose['y']:.3f}, "
+        f"{float_pose['z']:.3f})  (x,y track target)"
     )
 
     tank_sim = IncludeLaunchDescription(
@@ -361,6 +378,19 @@ def generate_launch_description():
             "rate",
             default_value="10.0",
             description="Trajectory playback rate (Hz). Higher = more gz service calls.",
+        ),
+        DeclareLaunchArgument(
+            "float_x",
+            default_value="",
+            description=(
+                "Override the float's x (m). Empty = use target.float_x from "
+                "targets.yaml if set, otherwise the target's own x."
+            ),
+        ),
+        DeclareLaunchArgument(
+            "float_y",
+            default_value="",
+            description="Override the float's y (m). Same precedence as float_x.",
         ),
     ]
     return LaunchDescription(args + [OpaqueFunction(function=launch_setup)])
