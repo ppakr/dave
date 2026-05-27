@@ -228,20 +228,28 @@ def launch_setup(context, *args, **kwargs):
         if not os.path.isfile(path):
             raise RuntimeError(f"SDF not found: {path}")
 
-    # Float x/y resolution, in order of precedence:
-    #   1. CLI float_x:= / float_y:=  (non-empty wins)
-    #   2. Per-target `float_x` / `float_y` keys in targets.yaml
-    #   3. Default to the target's own x / y (center-aligned on the Z axis)
+    # Float x/y/z resolution, in order of precedence:
+    #   1. CLI float_x:= / float_y:= / float_z:= (non-empty wins)
+    #   2. Per-target `float_x` / `float_y` / `float_z` keys in targets.yaml
+    #   3. For x/y: default to the target's own x/y (center-aligned).
+    #      For z:   default to scene.float.z (kept from float_pose dict).
     cli_fx = LaunchConfiguration("float_x").perform(context).strip()
     cli_fy = LaunchConfiguration("float_y").perform(context).strip()
+    cli_fz = LaunchConfiguration("float_z").perform(context).strip()
     yaml_fx = target_yaml.get("float_x")
     yaml_fy = target_yaml.get("float_y")
+    yaml_fz = target_yaml.get("float_z")
     float_pose["x"] = float(cli_fx) if cli_fx else (
         float(yaml_fx) if yaml_fx is not None else target_pose["x"]
     )
     float_pose["y"] = float(cli_fy) if cli_fy else (
         float(yaml_fy) if yaml_fy is not None else target_pose["y"]
     )
+    if cli_fz:
+        float_pose["z"] = float(cli_fz)
+    elif yaml_fz is not None:
+        float_pose["z"] = float(yaml_fz)
+    # else: float_pose["z"] stays at scene.float.z (the dict's original value).
 
     print(
         f"[tank_scene] sensor={sensor} (namespace={profile['namespace']}) "
@@ -391,6 +399,15 @@ def generate_launch_description():
             "float_y",
             default_value="",
             description="Override the float's y (m). Same precedence as float_x.",
+        ),
+        DeclareLaunchArgument(
+            "float_z",
+            default_value="",
+            description=(
+                "Override the float's z (m). Precedence: CLI > target.float_z > "
+                "scene.float.z. Per-target float_z is set so the float bottom "
+                "clears the target top by 5 cm."
+            ),
         ),
     ]
     return LaunchDescription(args + [OpaqueFunction(function=launch_setup)])
