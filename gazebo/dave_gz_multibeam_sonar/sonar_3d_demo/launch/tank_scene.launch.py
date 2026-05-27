@@ -205,8 +205,14 @@ def launch_setup(context, *args, **kwargs):
     # sim_world_T_object = sim_world_T_sonar (translation) + sonar_T_object (CSV),
     # which assumes sensor_pose has identity rotation — true for the current
     # targets.yaml. CLI overrides on x/y/z (non-empty pose_overrides) still win.
+    #
+    # `csv_overlay: false` on a target opts that target out of the CSV overlay
+    # entirely. Use this when the YAML x/y/z have been hand-tuned (e.g. to
+    # compensate for an off-centre mesh origin) and must not be replaced by the
+    # raw bag medians.
     real_xyz_used = False
-    if pose_source in ("real_median", "real_trajectory"):
+    csv_overlay = bool(target_yaml.get("csv_overlay", True))
+    if pose_source in ("real_median", "real_trajectory") and csv_overlay:
         real_xyz = _lookup_real_median(target, poses_dir)
         if real_xyz is not None:
             sx, sy, sz = sensor_pose["x"], sensor_pose["y"], sensor_pose["z"]
@@ -221,6 +227,11 @@ def launch_setup(context, *args, **kwargs):
                 f"target='{target}' in {poses_dir}/summary_static.csv — "
                 f"falling back to YAML."
             )
+    elif not csv_overlay:
+        print(
+            f"[tank_scene] csv_overlay=false for target='{target}' — using "
+            f"hand-tuned YAML position verbatim."
+        )
 
     float_sdf = os.path.join(BLENDER_MODELS_DIR, "float", "model.sdf")
     target_sdf = os.path.join(BLENDER_MODELS_DIR, target, "model.sdf")
@@ -251,16 +262,21 @@ def launch_setup(context, *args, **kwargs):
         float_pose["z"] = float(yaml_fz)
     # else: float_pose["z"] stays at scene.float.z (the dict's original value).
 
+    if real_xyz_used:
+        pose_tag = " (CSV)"
+    elif not csv_overlay:
+        pose_tag = " (YAML, csv_overlay=false)"
+    else:
+        pose_tag = " (YAML)"
     print(
         f"[tank_scene] sensor={sensor} (namespace={profile['namespace']}) "
-        f"target={target} pose_source={pose_source}"
-        f"{' (CSV)' if real_xyz_used else ' (YAML)'}\n"
+        f"target={target} pose_source={pose_source}{pose_tag}\n"
         f"            target=({target_pose['x']:.3f}, {target_pose['y']:.3f}, "
         f"{target_pose['z']:.3f}) "
         f"rpy=({target_pose['roll']:.4f}, {target_pose['pitch']:.4f}, "
         f"{target_pose['yaw']:.4f})\n"
         f"            float =({float_pose['x']:.3f}, {float_pose['y']:.3f}, "
-        f"{float_pose['z']:.3f})  (x,y track target)"
+        f"{float_pose['z']:.3f})"
     )
 
     tank_sim = IncludeLaunchDescription(

@@ -61,7 +61,7 @@ targets:
     roll: 1.5708
     pitch: 0.0
     yaw: 1.5708
-    float_z: 1.119       # TODO
+    float_z: 1.0664      
   circle_petg:           # bag: apr22_petg_circle_static
     x: 0.629             # sonar + 1.579
     y: 0.044             # sonar + 0.044
@@ -109,7 +109,7 @@ targets:
     roll: 3.14159
     pitch: 0.0
     yaw: 1.5708
-    float_z: 1.193       # TODO
+    float_z: 1.1425      
   triangle_wood:         # bag: apr22_wood_triangle_static
     x: 0.624             # sonar + 1.574
     y: 0.007             # sonar + 0.007
@@ -117,7 +117,7 @@ targets:
     roll: 3.14159
     pitch: 0.0
     yaw: 1.5708
-    float_z: 1.301       # TODO
+    float_z: 1.2549       
 
   # ── Metal targets — real-data medians from chain-suspended-sheet bags ───
   circle_metal:          # bag: apr22_chain_circle_static
@@ -137,10 +137,17 @@ targets:
     yaw: 1.5708
     float_z: 1.0674      
   triangle_metal:        # bag: apr22_chain_triangle_static
+    # Mesh origin is offset +0.150 m in Y from the visible centroid. We
+    # spawn the target 0.150 m below in Y so the mesh centre lands at the
+    # bag-derived pose (0.581, 0.029). `csv_overlay: false` prevents
+    # tank_scene.launch.py from re-overwriting target.y from the CSV.
     x: 0.581             # sonar + 1.531
-    y: 0.029             # sonar + 0.029
+    y: -0.1214           # bag y (0.029) − mesh Y offset (0.150) = −0.121
     z: 0.382             # sonar + (-0.118)
     roll: 3.14159
     pitch: 0.0
     yaw: 1.5708
-    float_z: 1.274       # TODO
+    csv_overlay: false   # YAML pose hand-tuned for mesh offset — keep it
+    float_x: 0.581       # = bag x
+    float_y: 0.0286      # = bag y (where the mesh visible centre lands)
+    float_z: 1.224
