@@ -55,20 +55,24 @@
         </camera>
       </sensor>
 
-      <!-- Replace Multibeam sonar with 3D lidar instead -->
+      <!-- 3D lidar configured to match the Water Linked Sonar 3D-15:
+           90 deg x 40 deg FOV, 256 (H) x 64 (V) beams, 0.1-10 m range, 30 Hz.
+           These mirror sonar_3d/generate_3d_sonar.py (the simulated 3D sonar).
+           Note: gpu_lidar at 256x64x30 Hz is GPU-heavy; lower update_rate
+           (e.g. 10-15) if the sim can't keep real-time. -->
       <sensor name="gpu_lidar" type="gpu_lidar">
         <pose>0 0 0 0 0 0</pose>
         <update_rate>5</update_rate>
         <lidar>
           <scan>
             <horizontal>
-              <samples>105</samples>
+              <samples>256</samples>
               <resolution>1.0</resolution>
               <min_angle>-0.785398</min_angle>
               <max_angle>0.785398</max_angle>
             </horizontal>
             <vertical>
-              <samples>25</samples>
+              <samples>64</samples>
               <resolution>1.0</resolution>
               <min_angle>-0.349066</min_angle>
               <max_angle>0.349066</max_angle>
@@ -76,7 +80,7 @@
           </scan>
           <range>
             <min>0.1</min>
-            <max>15.0</max>
+            <max>10.0</max>
             <resolution>0.01</resolution>
           </range>
         </lidar>
