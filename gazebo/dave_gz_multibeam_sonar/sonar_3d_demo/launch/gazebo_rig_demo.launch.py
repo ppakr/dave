@@ -24,9 +24,10 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 def generate_launch_description():
     pkg_dave_demos = get_package_share_directory("dave_demos")
 
-    # 3D sonar spawned 3 m behind the gazebo_rig CAD (centered on the
-    # world origin), bore axis +X. Run viz.launch.py separately for the
-    # aggregator + RViz, once the multibeams have initialized.
+    # 3D sonar spawned 3 m in front of the gazebo_rig CAD (centered on
+    # the world origin), yawed 180 deg so bore axis points back at -X.
+    # Run viz.launch.py separately for the aggregator + RViz, once the
+    # multibeams have initialized.
     rig_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_dave_demos, "launch", "dave_sensor.launch.py")
@@ -35,12 +36,12 @@ def generate_launch_description():
             "namespace": "3d_sonar",
             "world_name": "gazebo_rig_demo",
             "paused": "false",
-            "x": "-3.0",
+            "x": "4.0",
             "y": "0.0",
-            "z": "0.0",
+            "z": "0.5",
             "roll": "0.0",
             "pitch": "0.0",
-            "yaw": "0.0",
+            "yaw": "-3.14",
             "debug": "true",
             "verbosity_level": "4",
         }.items(),
