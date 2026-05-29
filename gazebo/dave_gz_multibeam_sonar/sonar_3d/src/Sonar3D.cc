@@ -34,6 +34,33 @@ public:
   {
     received_.fill(false);
 
+    // Per-beam intensity-cull threshold (sim dB, NOT WaterLinked's 0–51 dB scale).
+    //
+    // Beams whose peak intensity falls below this value are dropped from the
+    // output cloud — i.e. this is a noise-FLOOR cull, not a saturation ceiling.
+    //
+    // The kernel emits intensity as 10·log10(power) (== 20·log10(amplitude); the
+    // two formulas agree numerically). The slope vs `<laser_retro>` is calibrated
+    // to +10 dB/decade (Phases A+B). However the *zero point* of this dB scale
+    // is the sim's raw scatter level — NOT WL's receiver noise floor — so the
+    // numeric range here (currently ~70–95 dB on the tank scene) is offset from
+    // WL's strength image's 0–51 dB scale by an unknown constant tied to
+    // constMu + the absent TVG model.
+    //
+    // Calibration recipe (Phase C/D, see docs/msc_docs_md/material_reflectivity_phase_c_notes.md):
+    //   1. Launch sonar_3d_demo in the empty-tank world.
+    //   2. Watch the per-msg log line `Sonar %d first msg: beam dB range [..., ...]`
+    //      across all 64 sub-sonars; take the global max as `reverb_floor_sim_dB`.
+    //   3. Set this parameter to `reverb_floor_sim_dB + ~3 dB` so reverb-only
+    //      beams are culled but real targets pass.
+    // Override at runtime with: `--ros-args -p intensity_threshold_db:=<value>`.
+    this->declare_parameter<double>("intensity_threshold_db", 70.0);
+    intensity_threshold_db_ =
+      static_cast<float>(this->get_parameter("intensity_threshold_db").as_double());
+    RCLCPP_INFO(
+      this->get_logger(), "Per-beam intensity-cull threshold: %.1f dB (sim scale)",
+      intensity_threshold_db_);
+
     pc_pub_ =
       this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensor/sonar_3d/pointcloud", 10);
 
@@ -253,7 +280,7 @@ private:
     // Find the range index of maximum intensity for each beam (column).
     std::vector<uint32_t> max_indices(beam_count, 0);
     std::vector<float> max_values(beam_count, 0.0f);
-    float threshold{85.0f};
+    const float threshold = intensity_threshold_db_;
     for (uint32_t beam = 0; beam < beam_count; ++beam)
     {
       double max_val = -1.0;
@@ -348,6 +375,7 @@ private:
   std::array<bool, NUM_SONARS> received_;
   size_t received_count_;
   std_msgs::msg::Header latest_header_;
+  float intensity_threshold_db_;
 };
 
 int main(int argc, char * argv[])
