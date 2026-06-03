@@ -54,7 +54,7 @@ public:
     //   3. Set this parameter to `reverb_floor_sim_dB + ~3 dB` so reverb-only
     //      beams are culled but real targets pass.
     // Override at runtime with: `--ros-args -p intensity_threshold_db:=<value>`.
-    this->declare_parameter<double>("intensity_threshold_db", 70.0);
+    this->declare_parameter<double>("intensity_threshold_db", 85.0);
     intensity_threshold_db_ =
       static_cast<float>(this->get_parameter("intensity_threshold_db").as_double());
     RCLCPP_INFO(
