@@ -176,6 +176,7 @@ private:
     // OpenCV images
     cv::Mat pointCloudImage;
     cv::Mat reflectivityImage;
+    cv::Mat retroImage;  // Per-ray laser_retro from GpuRays, fed into reflectivityImage.
     cv::Mat randImage;
 
     // Angles

@@ -61,7 +61,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -106,7 +107,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -151,7 +153,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -196,7 +199,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -241,7 +245,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -286,7 +291,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -331,7 +337,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -376,7 +383,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -421,7 +429,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -466,7 +475,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -511,7 +521,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -556,7 +567,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -601,7 +613,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -646,7 +659,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -691,7 +705,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -736,7 +751,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -781,7 +797,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -826,7 +843,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -871,7 +889,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -916,7 +935,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -961,7 +981,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1006,7 +1027,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1051,7 +1073,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1096,7 +1119,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1141,7 +1165,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1186,7 +1211,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1231,7 +1257,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1276,7 +1303,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1321,7 +1349,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1366,7 +1395,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1411,7 +1441,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1456,7 +1487,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1501,7 +1533,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1546,7 +1579,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1591,7 +1625,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1636,7 +1671,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1681,7 +1717,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1726,7 +1763,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1771,7 +1809,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1816,7 +1855,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1861,7 +1901,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1906,7 +1947,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1951,7 +1993,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -1996,7 +2039,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2041,7 +2085,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2086,7 +2131,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2131,7 +2177,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2176,7 +2223,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2221,7 +2269,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2266,7 +2315,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2311,7 +2361,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2356,7 +2407,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2401,7 +2453,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2446,7 +2499,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2491,7 +2545,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2536,7 +2591,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2581,7 +2637,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2626,7 +2683,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2671,7 +2729,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2716,7 +2775,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2761,7 +2821,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2806,7 +2867,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2851,7 +2913,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
@@ -2896,7 +2959,8 @@
         </ray>
           <spec>
             <verticalFOV>1.6</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>

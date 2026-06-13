@@ -134,7 +134,8 @@ for i in range(multibeam_vertical_num_sensors):
         </ray>
           <spec>
             <verticalFOV>{multibeam_vertical_fov_deg}</verticalFOV>
-            <sonarFreq>900e3</sonarFreq>
+            <!-- WaterLinked Sonar 3D-15 Navigation mode = 1.2 MHz (per WL spec). -->
+            <sonarFreq>1.2e6</sonarFreq>
             <bandwidth>29.9e3</bandwidth>
             <soundSpeed>1500</soundSpeed>
             <sourceLevel>220</sourceLevel>
