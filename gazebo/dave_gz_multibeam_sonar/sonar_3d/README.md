@@ -34,56 +34,15 @@ ros2 launch dave_multibeam_sonar_demo 3d_sonar_demo.launch.py
 This launch opens RViz itself; `rviz:=false` skips it. Start the aggregator
 separately (see below).
 
-### Option B — WaterLinked wetlab tank
+### Option B — parametric tank+float scene with selectable target and sensor
 
-The validation scene that mirrors the real-tank recording setup
-(`tank_experiment.world`, with the `WL_wetlab_tank` model fetched from
-Gazebo Fuel on first launch). Like scenes C and D, this is **sim only** —
-RViz and the aggregator come from `viz.launch.py`:
-
-```bash
-# terminal 1 — sim (sonar by default, sensor:=lidar for lidar)
-ros2 launch sonar_3d_demo tank_experiment.launch.py
-ros2 launch sonar_3d_demo tank_experiment.launch.py sensor:=lidar
-
-# terminal 2 — once the sensors have initialized; use the tank-specific
-# RViz layouts via rviz_config (viz.launch.py defaults to the
-# square_metal layouts otherwise)
-ros2 launch sonar_3d_demo viz.launch.py \
-    rviz_config:=$(ros2 pkg prefix sonar_3d_demo)/share/sonar_3d_demo/rviz/tank_experiment.rviz
-ros2 launch sonar_3d_demo viz.launch.py sensor:=lidar \
-    rviz_config:=$(ros2 pkg prefix sonar_3d_demo)/share/sonar_3d_demo/rviz/tank_experiment_lidar.rviz
-```
-
-### Option C — square metal target in the wetlab tank
-
-A variant of the wetlab-tank scene with a `square_metal` model placed 1.5 m
-straight ahead of the sonar and 0.75 m below the water surface
-(`square_metal_demo.world`; the `square_metal` model lives in
-`dave_object_models/description/`). Unlike A and B, this launch is **sim
-only** — RViz and the aggregator come from `viz.launch.py`:
-
-```bash
-# terminal 1 — sim
-ros2 launch sonar_3d_demo square_metal_demo.launch.py
-
-# terminal 2 — once the beams have initialized (see below)
-ros2 launch sonar_3d_demo viz.launch.py
-```
-
-`viz.launch.py` runs `sonar_aggregator` and RViz together. Arguments:
-`rviz:=false` to skip RViz, `rviz_config:=/path/to/foo.rviz` to use a
-different layout (defaults to `sonar_3d_demo/rviz/square_metal_demo.rviz`).
-
-### Option D — parametric tank+float scene with selectable target and sensor
-
-A variant of scene C built for swapping between the full target library and
-between sonar / lidar sensors without editing the world. The world
+The parametric wetlab-tank scene: swap between the full target library and
+between the sonar / lidar sensors without editing the world. The world
 (`tank_with_float.world`) only holds the tank, lights, and GUI plugins.
 Float, sensor, and target are spawned at launch time from
 `sonar_3d_demo/config/targets.yaml` — that YAML is the single source of
-truth for every pose in the scene. Like scene C, this is **sim only** —
-RViz comes from `viz.launch.py`.
+truth for every pose in the scene. Unlike scene A (which opens RViz
+itself), this is **sim only** — RViz comes from `viz.launch.py`.
 
 ```bash
 # terminal 1 — sim, sensor + target selectable
@@ -178,12 +137,12 @@ missing from the first cloud — watch the Gazebo log until the
   ros2 run sonar_3d sonar_aggregator
   ```
 
-- For scenes B, C, and D it is already part of `viz.launch.py` (start
-  that launch only after the beams are up). In scenes B and D,
-  `sensor:=lidar` skips the aggregator entirely — the lidar publishes
-  its own point cloud directly on `/lidar_3d/lidar/points`.
+- For scene B it is already part of `viz.launch.py` (start that launch
+  only after the beams are up). In scene B, `sensor:=lidar` skips the
+  aggregator entirely — the lidar publishes its own point cloud directly
+  on `/lidar_3d/lidar/points`.
 
-### Gotcha — clean up before re-launching
+### Clean up before re-launching
 
 `gz sim` ignores `SIGTERM`, so a `Ctrl+C`'d run can leave an orphaned
 `gz sim` (plus stray `static_transform_publisher` / `rviz2` /
