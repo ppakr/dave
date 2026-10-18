@@ -81,6 +81,8 @@ def launch_setup(context, *args, **kwargs):
             "pitch": pitch,
             "yaw": yaw,
             "use_ned_frame": use_ned_frame,
+            "debug": debug,
+            "verbosity_level": verbosity_level,
         }.items(),
     )
 

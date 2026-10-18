@@ -39,6 +39,8 @@ def generate_launch_description():
             "x": "5.8",
             "z": "2",
             "yaw": "3.14",
+            "debug": "true",
+            "verbosity_level": "4",
         }.items(),
     )
 

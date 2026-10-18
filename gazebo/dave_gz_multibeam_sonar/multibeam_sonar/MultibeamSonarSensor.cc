@@ -501,8 +501,10 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
     for (int h = 0; h < beamCount; ++h)
     {
       // Calculate beam angles
-      gz::math::Angle beamApertureAngle =
-        gz::math::Angle(verticalAngleMax - verticalAngleMin) * angleUnit;
+      gz::math::Angle beamApertureAngle = gz::math::Angle(verticalAngleMax - verticalAngleMin) *
+                                          angleUnit;  // not squre like in the paper
+      // psi_max -> vertical angle max, psi_min -> vertical angle min
+      // beamApartureangle -> psi_bw in figure 1
       gz::math::Angle beamRotationAngle =
         gz::math::Angle(horizAngleMin + (h * (horizAngleMax - horizAngleMin) / beamCount)) *
         angleUnit;
@@ -533,13 +535,23 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   {
     beamsSphericalFootprint.Merge(beam.SphericalFootprint());
   }
+  gzmsg << "beamsSphericalFootprint: " << beamsSphericalFootprint.XMin() << " "
+        << beamsSphericalFootprint.XMax() << " " << beamsSphericalFootprint.YMin() << " "
+        << beamsSphericalFootprint.YMax() << std::endl;
   // Rendering sensors' FOV must be symmetric about its main axis
   beamsSphericalFootprint.Merge(beamsSphericalFootprint.Flip());
+  gzmsg << "beamsSphericalFootprint Fliped: " << beamsSphericalFootprint.XMin() << " "
+        << beamsSphericalFootprint.XMax() << " " << beamsSphericalFootprint.YMin() << " "
+        << beamsSphericalFootprint.YMax() << std::endl;
 
-  this->raySensor->SetAngleMin(horizAngleMin);
+  this->raySensor->SetAngleMin(horizAngleMin);  // horizontal angle
   this->raySensor->SetAngleMax(horizAngleMax);
+  gzmsg << "Horizontal Angle Min" << horizAngleMin << std::endl;
+  gzmsg << "Horizontal Angle Max" << horizAngleMax << std::endl;
   gzmsg << "Beams Angle Min: " << beamsSphericalFootprint.XMin() << std::endl;
   gzmsg << "Beams Angle Max: " << beamsSphericalFootprint.XMax() << std::endl;
+  gzmsg << "Vertical Angle Min" << verticalAngleMin << std::endl;
+  gzmsg << "Vertical Angle Max" << verticalAngleMax << std::endl;
   gzmsg << "V Angle Max: " << beamsSphericalFootprint.YMax() << std::endl;
   gzmsg << "V Angle Min: " << beamsSphericalFootprint.YMin() << std::endl;
 
@@ -551,8 +563,8 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   this->raySensor->SetRayCount(horizontalRayCount);
   this->nBeams = horizontalRayCount;
 
-  this->raySensor->SetVerticalAngleMin(beamsSphericalFootprint.YMin());
-  this->raySensor->SetVerticalAngleMax(beamsSphericalFootprint.YMax());
+  this->raySensor->SetVerticalAngleMin(verticalAngleMin);
+  this->raySensor->SetVerticalAngleMax(verticalAngleMax);
   auto verticalRayCount = rayCount;
   if (verticalRayCount % 2 == 0)
   {
@@ -604,9 +616,10 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   this->pointMsg.set_height(this->raySensor->VerticalRangeCount());
   this->pointMsg.set_row_step(this->pointMsg.point_step() * this->pointMsg.width());
 
-  this->rayConnection = this->raySensor->ConnectNewGpuRaysFrame(std::bind(
-    &MultibeamSonarSensor::Implementation::OnNewFrame, this, std::placeholders::_1,
-    std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
+  this->rayConnection = this->raySensor->ConnectNewGpuRaysFrame(
+    std::bind(
+      &MultibeamSonarSensor::Implementation::OnNewFrame, this, std::placeholders::_1,
+      std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 
   // Transmission path properties (typical model used here)
   // More sophisticated model by Francois-Garrison model is available
@@ -686,7 +699,7 @@ bool MultibeamSonarSensor::Implementation::InitializeBeamArrangement(MultibeamSo
   }
   this->beamCorrectorSum = 0.0;
 
-  this->constMu = true;
+  this->constMu = false;
   this->mu = 1e-3;
 
   return true;
@@ -913,6 +926,7 @@ void MultibeamSonarSensor::Implementation::FillPointCloudMsg(const float * _rayB
   // After filling pointMsg, compute pointCloudImage as well
   this->lock_.lock();
   this->pointCloudImage.create(height, width, CV_32FC1);
+  this->retroImage.create(height, width, CV_32FC1);
   cv::MatIterator_<float> iter_image = this->pointCloudImage.begin<float>();
 
   bool angles_calculation_flag = false;
@@ -942,9 +956,11 @@ void MultibeamSonarSensor::Implementation::FillPointCloudMsg(const float * _rayB
       // Index in _rayBuffer
       auto index = j * width * channels + i * channels;
       float depth = _rayBuffer[index];
+      float retro = _rayBuffer[index + 1];
 
       float range = std::isfinite(depth) ? depth : 100000.0f;
       *iter_image = range;
+      this->retroImage.at<float>(j, i) = std::isfinite(retro) ? retro : 0.0f;
 
       // Store azimuth angles on the first row only
       if (angles_calculation_flag && j == 0)
@@ -1053,10 +1069,16 @@ void MultibeamSonarSensor::Implementation::ComputeSonarImage()
     ComputeCorrector();
   }
 
-  if (this->reflectivityImage.rows == 0)
+  // reflectivityImage is indexed (row=ray, col=beam) by the CUDA kernel —
+  // i.e. (height, width), matching pointCloudImage.
+  if (this->constMu || this->retroImage.rows == 0)
   {
     this->reflectivityImage =
-      cv::Mat(this->pointMsg.width(), this->pointMsg.height(), CV_32FC1, cv::Scalar(this->mu));
+      cv::Mat(this->pointMsg.height(), this->pointMsg.width(), CV_32FC1, cv::Scalar(this->mu));
+  }
+  else
+  {
+    cv::max(this->retroImage, this->mu, this->reflectivityImage);
   }
 
   auto start = std::chrono::high_resolution_clock::now();
